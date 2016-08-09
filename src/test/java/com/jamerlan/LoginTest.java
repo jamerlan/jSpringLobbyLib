@@ -9,7 +9,7 @@ public class LoginTest {
 
     @Test
     public void testLogin() throws IOException {
-        Login login = new Login("LOGIN", "PASSWORD", 8888, "*", "java unit test", 0);
+        Login login = new Login("[ru]test", "test", 8888, "*", "java unit test", 0);
 
         GameState gameState = new GameState();
         gameState.getConnection();
