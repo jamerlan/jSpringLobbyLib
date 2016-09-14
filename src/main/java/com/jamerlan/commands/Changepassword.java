@@ -13,14 +13,14 @@ public class Changepassword {
 
     private static boolean returnvalue;
 
-    public boolean outputpas(String oldPassword, String newPassword) throws IOException, InterruptedException {
+    public void outputpas(String oldPassword, String newPassword) throws IOException, InterruptedException {
         final String host = "78.46.100.157";
         final int port = 8200;
         final Socket socket = new Socket(host, port);
         final PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         final BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        Runnable runnable = new Runnable() {
+        /*Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 String userInput;
@@ -37,10 +37,10 @@ public class Changepassword {
             }
         };
 
-        new Thread(runnable).start();
+        new Thread(runnable).start();*/
         final String encodedoldPassword = new Base64Encoder().encodeToString(new MD5Encoder().encode(oldPassword));
         final String encodednewPassword = new Base64Encoder().encodeToString(new MD5Encoder().encode(newPassword));
         out.println("CHANGEACCOUNTPASS " + encodedoldPassword + " " + encodednewPassword);
-        return returnvalue;
+       // return returnvalue;
     }
 }

@@ -1,0 +1,19 @@
+package com.jamerlan.commands.impl;
+
+
+import com.jamerlan.commands.Command;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class JoinBattle implements Command {
+    private int battleID;
+
+    public JoinBattle(int battleID){
+        this.battleID = battleID;
+    }
+
+    public void execute(PrintWriter writer) throws IOException{
+        writer.println("JOINBATTLE " + battleID);
+    }
+}
