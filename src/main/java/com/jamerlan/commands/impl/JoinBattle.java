@@ -13,6 +13,7 @@ public class JoinBattle implements Command {
         this.battleID = battleID;
     }
 
+    @Override
     public void execute(PrintWriter writer) throws IOException{
         writer.println("JOINBATTLE " + battleID);
     }

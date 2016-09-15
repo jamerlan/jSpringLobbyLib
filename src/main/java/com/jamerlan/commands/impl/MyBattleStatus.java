@@ -11,6 +11,7 @@ public class MyBattleStatus implements Command{
          this.arg = arg;
      }
 
+     @Override
      public void execute(PrintWriter writer){
          writer.println("MYBATTLESTATUS " + arg);
      }
