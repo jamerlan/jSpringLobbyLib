@@ -9,15 +9,21 @@ import java.io.IOException;
 public class LoginTest {
 
     @Test
-    public void testLogin() throws IOException {
+    public void testLogin() throws IOException, InterruptedException {
         Login login = new Login("[ru]test", "test", 8888, "*", "java unit test", 0);
         JoinBattle joinBattle = new JoinBattle(19220);
 
-        GameState gameState = new GameState();
-        gameState.getConnection();
+        ServerState serverState = new ServerState();
 
-        login.execute(gameState.getConnection().getWriter());
-        joinBattle.execute(gameState.getConnection().getWriter());
-        gameState.getConnection().close();
+        login.execute(serverState.getConnection().getWriter());
+
+        joinBattle.execute(serverState.getConnection().getWriter());
+
+
+        while (true) {
+            Thread.sleep(100);
+        }
+
+//        serverState.getConnection().close();
     }
 }

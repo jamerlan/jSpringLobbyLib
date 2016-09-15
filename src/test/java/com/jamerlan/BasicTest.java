@@ -34,7 +34,7 @@ public class BasicTest {
                 try {
                     while ((userInput = in.readLine()) != null) {
 //                        out.println(userInput);
-                        System.out.println("echo: " + in.readLine());
+                        System.out.println("echo: " + userInput);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

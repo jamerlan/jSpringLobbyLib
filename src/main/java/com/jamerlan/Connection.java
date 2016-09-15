@@ -26,12 +26,12 @@ public class Connection {
     }
 
     public void close() {
-        try {
-            socket.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        out.close();
+//        try {
+//            socket.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        out.close();
     }
 
     public boolean isConnected() {

@@ -39,7 +39,7 @@ public class EltTest {
                     String userInput;
                     try {
                         while ((userInput = in.readLine()) != null) {
-                            System.out.println("echo: " + in.readLine());
+                            System.out.println("echo: " + userInput);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
