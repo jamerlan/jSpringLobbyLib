@@ -1,7 +1,5 @@
 package com.jamerlan;
 
-import com.jamerlan.model.User;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -19,6 +17,21 @@ public class GameProcessor {
                 String userInput;
                 try {
                     while ((userInput = reader.readLine()) != null) {
+                        if(userInput.startsWith("LEFTBATTLE")){
+                            serverState.addLeftBattle(userInput);
+                        }else
+                        if (userInput.startsWith("CLIENTSTATUS")) {
+                           serverState.addClientStatus(userInput);
+                        }else
+                        if (userInput.startsWith("BATTLEOPENED")){
+                            serverState.addOpenedBattle(userInput);
+                        }else
+                        if (userInput.startsWith("UPDATEBATTLEINFO")){
+                            serverState.addUpdateBattleInfo(userInput);
+                        }else
+                        if(userInput.startsWith("JOINEDBATTLE")){
+                            serverState.addJoinedBattle(userInput);
+                        }else
                         if(userInput.startsWith("ADDUSER")) {
                             serverState.addUser(userInput);
                         } else {
