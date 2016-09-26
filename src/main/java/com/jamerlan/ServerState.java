@@ -5,13 +5,19 @@ import com.jamerlan.model.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
 
 public class ServerState implements Serializable {
+
+    private List<Battle> battles = new ArrayList<>();
+
     private List<User> usersOnline = new ArrayList<>();
-    private List<OpenedBattle> openedBattles = new ArrayList<>();
+//    private List<OpenedBattle> openedBattles = new ArrayList<>();
     private List<JoinedBattle> joinedBattles = new ArrayList<>();
-    private List<UpdateBattleInfo> updateBattleInfos = new ArrayList<>();
+//    private List<UpdateBattleInfo> updateBattleInfos = new ArrayList<>();
     private List<ClientStatus> clientStatuses = new ArrayList<>();
     private List<LeftBattle> leftBattles = new ArrayList<>();
 
@@ -64,29 +70,41 @@ public class ServerState implements Serializable {
 //        String map = openedBattleParts[11];
 //        String gameName = openedBattleParts[12];
 //        String title = openedBattleParts[13];
+        ArrayList<String> users = new ArrayList<>();
+        Battle battle = new Battle(users, battleId, type, natType, fouder, ip, port, maxPlayers, passworded, rank, mapHash);
+        battles.add(battle);
 
-
-        OpenedBattle openedBattle = new OpenedBattle(battleId, type, natType, fouder, ip, port, maxPlayers, passworded, rank, mapHash);
-        openedBattles.add(openedBattle);
-
-        //System.out.println("!!!!!!!!!!!!!!!!!! openedBattle: " + openedBattle);
     }
 
-    public List<OpenedBattle> getOpenedBattles() {
-        return openedBattles;
-    }
+    public List<Battle> getBattles() {
+        for (int i = 0; i < battles.size(); i++){
+            System.out.println("      " + battles.toString());
+        }
 
+        return battles;
+    }
 
     public void addJoinedBattle(String joinedBattleLine){
+
         String[] joinedBattleParts = joinedBattleLine.split(" ");
 
         String battleId = joinedBattleParts[1];
         String userName = joinedBattleParts[2];
 
-        JoinedBattle joinedBattle = new JoinedBattle(battleId, userName);
-        joinedBattles.add(joinedBattle);
-
-        //System.out.println("!!!!!!!!!!!!!!!!!!  " + joinedBattle);
+        ListIterator<Battle> iterator = battles.listIterator();
+        while (iterator.hasNext()){
+            if(iterator.next().getBattleId().equals(battleId)){
+                iterator.next().addUser(userName);
+                System.out.println(iterator.next().getBattleId() + " == " + battleId + "  _"+ (iterator.next().getBattleId()==battleId));
+//                System.out.println(" ++ battleId: " + iterator.next().getBattleId() + " seeking: " + iterator.next().getUsers() + " userName= " + userName);
+            }else{
+                System.out.println(iterator.next().getBattleId() + " == " + battleId + "  _"+ (iterator.next().getBattleId()==battleId));
+                ArrayList<String> users = new ArrayList<>();
+                users.add(userName);
+                Battle battle = new Battle(users, battleId);
+                iterator.add(battle);
+            }
+        }
     }
 
     public List<JoinedBattle> getJoinedBattles(){ return joinedBattles; }
@@ -114,13 +132,18 @@ public class ServerState implements Serializable {
         String mapHash = updateBattleInfoParts[4];
         String mapName = updateBattleInfoParts[5];
 
-        UpdateBattleInfo updateBattleInfo = new UpdateBattleInfo(battleId, spectatorCount, locked,mapHash,mapName);
-        updateBattleInfos.add(updateBattleInfo);
 
-        //System.out.println("!!!!!!!!!!!!!!!!!!  " + updateBattleInfo);
+
+        for (Battle seekingBattle:battles){
+            if(seekingBattle.getBattleId().equals(battleId)){
+                seekingBattle.setMapHash(mapHash);
+                seekingBattle.setMapName(mapName);
+                seekingBattle.setLocked(locked);
+                seekingBattle.setSpectatorCount(spectatorCount);
+            }
+        }
+//        System.out.println("===" + battles);
     }
-
-    public List<UpdateBattleInfo> getUpdateBattleInfos(){ return updateBattleInfos; }
 
     public void addLeftBattle(String leftBattleLine){
         String[] leftBattleParts = leftBattleLine.split(" ");
@@ -131,8 +154,19 @@ public class ServerState implements Serializable {
         LeftBattle leftBattle = new LeftBattle(battleId,userName);
         leftBattles.add(leftBattle);
 
-        System.out.println("!!!!!!!!!!!!!!!!!!  " + leftBattle);
+        //System.out.println("!!!!!!!!!!!!!!!!!!  " + leftBattle);
     }
 
     public List<LeftBattle> getLeftBattles() { return leftBattles; }
+
+    public void searchBattles(){
+        System.out.println("------------------+");
+        for (Battle batt:battles){
+            System.out.print("             serverState.getBattles = " + batt);
+            System.out.println("            user:" + batt.getUsers().toString());
+            Iterator<String> iterator = batt.getUsers().iterator();
+        }
+        System.out.println("------------------");
+    }
+
 }
