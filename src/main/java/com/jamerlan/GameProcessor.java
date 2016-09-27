@@ -17,6 +17,9 @@ public class GameProcessor {
                 String userInput;
                 try {
                     while ((userInput = reader.readLine()) != null) {
+                        if(userInput.startsWith("REMOVEUSER")){
+                            serverState.removeUser(userInput);
+                        }else
                         if(userInput.startsWith("LEFTBATTLE")){
                             serverState.addLeftBattle(userInput);
                         }else

@@ -121,6 +121,10 @@ public class Battle {
         users.add(userName);
     }
 
+    public void removeUser(String userName) {
+        users.remove(userName);
+    }
+
     public void setBattleId(String battleId) {
         this.battleId = battleId;
     }

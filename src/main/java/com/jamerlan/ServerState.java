@@ -16,10 +16,9 @@ public class ServerState implements Serializable {
 
     private List<User> usersOnline = new ArrayList<>();
 //    private List<OpenedBattle> openedBattles = new ArrayList<>();
-    private List<JoinedBattle> joinedBattles = new ArrayList<>();
-//    private List<UpdateBattleInfo> updateBattleInfos = new ArrayList<>();
+//    private List<JoinedBattle> joinedBattles = new ArrayList<>();
     private List<ClientStatus> clientStatuses = new ArrayList<>();
-    private List<LeftBattle> leftBattles = new ArrayList<>();
+//    private List<LeftBattle> leftBattles = new ArrayList<>();
 
     private Connection connection = new Connection();
 
@@ -93,21 +92,12 @@ public class ServerState implements Serializable {
 
         ListIterator<Battle> iterator = battles.listIterator();
         while (iterator.hasNext()){
-            if(iterator.next().getBattleId().equals(battleId)){
-                iterator.next().addUser(userName);
-                System.out.println(iterator.next().getBattleId() + " == " + battleId + "  _"+ (iterator.next().getBattleId()==battleId));
-//                System.out.println(" ++ battleId: " + iterator.next().getBattleId() + " seeking: " + iterator.next().getUsers() + " userName= " + userName);
-            }else{
-                System.out.println(iterator.next().getBattleId() + " == " + battleId + "  _"+ (iterator.next().getBattleId()==battleId));
-                ArrayList<String> users = new ArrayList<>();
-                users.add(userName);
-                Battle battle = new Battle(users, battleId);
-                iterator.add(battle);
-            }
+            Battle seekingbattle = iterator.next();
+            if(seekingbattle.getBattleId().equals(battleId)){ seekingbattle.addUser(userName); }
         }
     }
 
-    public List<JoinedBattle> getJoinedBattles(){ return joinedBattles; }
+//    public List<JoinedBattle> getJoinedBattles(){ return joinedBattles; }
 
     public void addClientStatus(String clientStatusLine){
         String[] clientStatusParts = clientStatusLine.split(" ");
@@ -132,8 +122,6 @@ public class ServerState implements Serializable {
         String mapHash = updateBattleInfoParts[4];
         String mapName = updateBattleInfoParts[5];
 
-
-
         for (Battle seekingBattle:battles){
             if(seekingBattle.getBattleId().equals(battleId)){
                 seekingBattle.setMapHash(mapHash);
@@ -142,7 +130,6 @@ public class ServerState implements Serializable {
                 seekingBattle.setSpectatorCount(spectatorCount);
             }
         }
-//        System.out.println("===" + battles);
     }
 
     public void addLeftBattle(String leftBattleLine){
@@ -152,19 +139,35 @@ public class ServerState implements Serializable {
         String userName = leftBattleParts[2];
 
         LeftBattle leftBattle = new LeftBattle(battleId,userName);
-        leftBattles.add(leftBattle);
-
-        //System.out.println("!!!!!!!!!!!!!!!!!!  " + leftBattle);
+        ListIterator<Battle> iterator = battles.listIterator();
+        while (iterator.hasNext()){
+            Battle seekingbattle = iterator.next();
+            if(seekingbattle.getBattleId().equals(battleId)){ seekingbattle.removeUser(userName); }
+        }
     }
 
-    public List<LeftBattle> getLeftBattles() { return leftBattles; }
+//    public List<LeftBattle> getLeftBattles() { return leftBattles; }
+
+    public void removeUser(String removeUserLine){
+        String[] removeUserParts = removeUserLine.split(" ");
+
+        String userName = removeUserParts[1];
+
+        Iterator<User> iterator = usersOnline.iterator();
+        while (iterator.hasNext()){
+            User user = iterator.next();
+            if(user.getUserName().equals(userName)){
+                iterator.next();
+                iterator.remove();
+            }
+        }
+
+    }
 
     public void searchBattles(){
         System.out.println("------------------+");
-        for (Battle batt:battles){
-            System.out.print("             serverState.getBattles = " + batt);
-            System.out.println("            user:" + batt.getUsers().toString());
-            Iterator<String> iterator = batt.getUsers().iterator();
+        for (Battle battle:battles){
+            System.out.println("             serverState.getBattles = " + battle);
         }
         System.out.println("------------------");
     }
