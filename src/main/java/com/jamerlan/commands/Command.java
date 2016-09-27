@@ -7,5 +7,5 @@ import java.io.PrintWriter;
  * All parameters are passed to constructor of concrete command.
  */
 public interface Command {
-    public void execute(PrintWriter writer) throws IOException;
+    void execute(PrintWriter writer) throws IOException;
 }

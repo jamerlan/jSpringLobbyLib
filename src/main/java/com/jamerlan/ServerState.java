@@ -1,5 +1,6 @@
 package com.jamerlan;
 
+import com.jamerlan.commands.impl.in.RemoveUser;
 import com.jamerlan.model.*;
 
 import java.io.IOException;
@@ -146,27 +147,9 @@ public class ServerState implements Serializable {
         }
     }
 
-//    public List<LeftBattle> getLeftBattles() { return leftBattles; }
-
-    public void removeUser(String removeUserLine){
-        String[] removeUserParts = removeUserLine.split(" ");
-
-        String userName = removeUserParts[1];
-
-        Iterator<User> iterator = usersOnline.iterator();
-        while (iterator.hasNext()){
-            User user = iterator.next();
-            if(user.getUserName().equals(userName)){
-                iterator.next();
-                iterator.remove();
-            }
-        }
-
-    }
-
-    public void searchBattles(){
+    public void searchBattles() {
         System.out.println("------------------+");
-        for (Battle battle:battles){
+        for (Battle battle : battles){
             System.out.println("             serverState.getBattles = " + battle);
         }
         System.out.println("------------------");

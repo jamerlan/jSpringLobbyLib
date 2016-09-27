@@ -1,5 +1,7 @@
 package com.jamerlan;
 
+import com.jamerlan.commands.impl.in.RemoveUser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -14,31 +16,32 @@ public class GameProcessor {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                String userInput;
+                String lineFromServer;
                 try {
-                    while ((userInput = reader.readLine()) != null) {
-                        if(userInput.startsWith("REMOVEUSER")){
-                            serverState.removeUser(userInput);
+                    while ((lineFromServer = reader.readLine()) != null) {
+                        if(lineFromServer.startsWith("REMOVEUSER")){
+                            new RemoveUser(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(userInput.startsWith("LEFTBATTLE")){
-                            serverState.addLeftBattle(userInput);
+                        if(lineFromServer.startsWith("LEFTBATTLE")){
+                            serverState.addLeftBattle(lineFromServer);
                         }else
-                        if (userInput.startsWith("CLIENTSTATUS")) {
-                           serverState.addClientStatus(userInput);
+                        if (lineFromServer.startsWith("CLIENTSTATUS")) {
+                           serverState.addClientStatus(lineFromServer);
                         }else
-                        if (userInput.startsWith("BATTLEOPENED")){
-                            serverState.addOpenedBattle(userInput);
+                        if (lineFromServer.startsWith("BATTLEOPENED")){
+                            System.out.println(lineFromServer);
+                            serverState.addOpenedBattle(lineFromServer);
                         }else
-                        if (userInput.startsWith("UPDATEBATTLEINFO")){
-                            serverState.addUpdateBattleInfo(userInput);
+                        if (lineFromServer.startsWith("UPDATEBATTLEINFO")){
+                            serverState.addUpdateBattleInfo(lineFromServer);
                         }else
-                        if(userInput.startsWith("JOINEDBATTLE")){
-                            serverState.addJoinedBattle(userInput);
+                        if(lineFromServer.startsWith("JOINEDBATTLE")){
+                            serverState.addJoinedBattle(lineFromServer);
                         }else
-                        if(userInput.startsWith("ADDUSER")) {
-                            serverState.addUser(userInput);
+                        if(lineFromServer.startsWith("ADDUSER")) {
+                            serverState.addUser(lineFromServer);
                         } else {
-                            System.out.println("echo: " + userInput);
+                            System.out.println("echo: " + lineFromServer);
                         }
                     }
                 } catch (IOException e) {
