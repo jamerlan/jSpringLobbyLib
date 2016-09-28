@@ -1,12 +1,11 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.in.RemoveUser;
-import com.jamerlan.model.*;
+import com.jamerlan.model.Battle;
+import com.jamerlan.model.User;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -15,11 +14,7 @@ public class ServerState implements Serializable {
 
     private List<Battle> battles = new ArrayList<>();
 
-    private List<User> usersOnline = new ArrayList<>();
-//    private List<OpenedBattle> openedBattles = new ArrayList<>();
-//    private List<JoinedBattle> joinedBattles = new ArrayList<>();
-    private List<ClientStatus> clientStatuses = new ArrayList<>();
-//    private List<LeftBattle> leftBattles = new ArrayList<>();
+    public List<User> usersOnline = new ArrayList<>();
 
     private Connection connection = new Connection();
 
@@ -43,8 +38,6 @@ public class ServerState implements Serializable {
 
         User user = new User(userName, country, "-", accountId);
         usersOnline.add(user);
-
-//        System.out.println("!!!!!!!!!!!!!!!!!! user: " + user);
     }
 
     public List<User> getUsersOnline() {
@@ -55,32 +48,28 @@ public class ServerState implements Serializable {
 
         String[] openedBattleParts =  openedBattleline.split(" ");
 
-        String battleId = openedBattleParts[1];
-        String type = openedBattleParts[2];
-        String natType = openedBattleParts[3];
+        int battleId = Integer.parseInt(openedBattleParts[1]);
+        int type = Integer.parseInt(openedBattleParts[2]);
+        int natType = Integer.parseInt(openedBattleParts[3]);
         String fouder = openedBattleParts[4];
         String ip = openedBattleParts[5];
-        String port = openedBattleParts[6];
-        String maxPlayers = openedBattleParts[7];
-        String passworded = openedBattleParts[8];
-        String rank = openedBattleParts[9];
-        String mapHash = openedBattleParts[10];
+        int port = Integer.parseInt(openedBattleParts[6]);
+        int maxPlayers = Integer.parseInt(openedBattleParts[7]);
+        int passworded = Integer.parseInt(openedBattleParts[8]);
+        int rank = Integer.parseInt(openedBattleParts[9]);
+        int mapHash = Integer.parseInt(openedBattleParts[10]);
 //        String engineName = openedBattleParts[11];
 //        String engineVersion = openedBattleParts[12];
 //        String map = openedBattleParts[11];
-//        String gameName = openedBattleParts[12];
-//        String title = openedBattleParts[13];
-        ArrayList<String> users = new ArrayList<>();
+        String gameName = openedBattleParts[12];
+        String title = openedBattleParts[13];
+        ArrayList<User> users = new ArrayList<>();
         Battle battle = new Battle(users, battleId, type, natType, fouder, ip, port, maxPlayers, passworded, rank, mapHash);
         battles.add(battle);
 
     }
 
     public List<Battle> getBattles() {
-        for (int i = 0; i < battles.size(); i++){
-            System.out.println("      " + battles.toString());
-        }
-
         return battles;
     }
 
@@ -88,47 +77,38 @@ public class ServerState implements Serializable {
 
         String[] joinedBattleParts = joinedBattleLine.split(" ");
 
-        String battleId = joinedBattleParts[1];
+        int battleId = Integer.parseInt(joinedBattleParts[1]);
         String userName = joinedBattleParts[2];
 
         ListIterator<Battle> iterator = battles.listIterator();
         while (iterator.hasNext()){
-            Battle seekingbattle = iterator.next();
-            if(seekingbattle.getBattleId().equals(battleId)){ seekingbattle.addUser(userName); }
+            Battle battle = iterator.next();
+
+            if(battle.getBattleId()==(battleId)){
+                for (User user: usersOnline) {
+                    if(userName.equals(user.getUserName())){
+                        battle.getUsers().add(user);
+                    }
+                }
+            }
         }
     }
-
-//    public List<JoinedBattle> getJoinedBattles(){ return joinedBattles; }
-
-    public void addClientStatus(String clientStatusLine){
-        String[] clientStatusParts = clientStatusLine.split(" ");
-
-        String userName = clientStatusParts[1];
-        String status = clientStatusParts[2];
-
-        ClientStatus clientStatus = new ClientStatus(userName,status);
-        clientStatuses.add(clientStatus);
-
-        //System.out.println("!!!!!!!!!!!!!!!!!!  " + clientStatus);
-    }
-
-    public List<ClientStatus> getClientStatuses(){ return clientStatuses; }
 
     public void addUpdateBattleInfo(String updateBattleInfoLine){
         String[] updateBattleInfoParts = updateBattleInfoLine.split(" ");
 
-        String battleId = updateBattleInfoParts[1];
+        int battleId = Integer.parseInt(updateBattleInfoParts[1]);
         String spectatorCount = updateBattleInfoParts[2];
         String locked = updateBattleInfoParts[3];
-        String mapHash = updateBattleInfoParts[4];
+        int mapHash = Integer.parseInt(updateBattleInfoParts[4]);
         String mapName = updateBattleInfoParts[5];
 
-        for (Battle seekingBattle:battles){
-            if(seekingBattle.getBattleId().equals(battleId)){
-                seekingBattle.setMapHash(mapHash);
-                seekingBattle.setMapName(mapName);
-                seekingBattle.setLocked(locked);
-                seekingBattle.setSpectatorCount(spectatorCount);
+        for (Battle battle:battles){
+            if(battle.getBattleId()==(battleId)){
+                battle.setMapHash(mapHash);
+                battle.setMapName(mapName);
+                battle.setLocked(locked);
+                battle.setSpectatorCount(spectatorCount);
             }
         }
     }
@@ -136,14 +116,13 @@ public class ServerState implements Serializable {
     public void addLeftBattle(String leftBattleLine){
         String[] leftBattleParts = leftBattleLine.split(" ");
 
-        String battleId = leftBattleParts[1];
+        int battleId = Integer.parseInt(leftBattleParts[1]);
         String userName = leftBattleParts[2];
 
-        LeftBattle leftBattle = new LeftBattle(battleId,userName);
         ListIterator<Battle> iterator = battles.listIterator();
         while (iterator.hasNext()){
-            Battle seekingbattle = iterator.next();
-            if(seekingbattle.getBattleId().equals(battleId)){ seekingbattle.removeUser(userName); }
+            Battle battle = iterator.next();
+            if(battle.getBattleId()==(battleId)){ battle.removeUser(userName); }
         }
     }
 

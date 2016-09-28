@@ -4,36 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Battle {
-    private List<String> users;
+    private List<User> users;
     private int battleId;
-    private String type;
-    private String natType;
+    private int type;
+    private int natType;
     private String fouder;
     private String ip;
-    private String port;
-    private String maxPlayers;
-    private String passworded;
-    private String rank;
-    private String mapHash;
+    private int port;
+    private int maxPlayers;
+    private int passworded;
+    private int rank;
+    private int mapHash;
     private String locked;
     private String spectatorCount;
 //    private String engineName;
 //    private String engineVersion;
     private String mapName;
-//    private String gameName;
-//    private String title;
+    private String gameName;
+    private String title;
 
-//    public Battle(ArrayList<String> users, String battleId, String spectatorCount, String locked, String mapHash, String mapName) {
-//        this.users = users;
-//        this.battleId = battleId;
-//        this.mapHash = mapHash;
-//        this.locked = locked;
-//        this.spectatorCount = spectatorCount;
-//        this.mapName = mapName;
-//    }
-
-    public Battle(ArrayList<String> users, int battleId, String type, String natType, String fouder, String ip, String port,
-                  String maxPlayers, String passworded, String rank, String mapHash) {
+    public Battle(ArrayList<User> users, int battleId, int type, int natType, String fouder, String ip, int port,
+                  int maxPlayers, int passworded, int rank, int mapHash) {
         this.battleId = battleId;
         this.type = type;
         this.natType = natType;
@@ -52,20 +43,37 @@ public class Battle {
         this.users = users;
     }
 
-    public Battle(List<String> users, int battleId) {
+    public Battle(List<User> users, int battleId) {
         this.users = users;
         this.battleId = battleId;
+    }
+
+    public Battle(List<User> users, int battleId, int type, int natType, String fouder, String ip, int port, int maxPlayers, int passworded, int rank, int mapHash, String mapName, String title, String gameName) {
+        this.users = users;
+        this.battleId = battleId;
+        this.type = type;
+        this.natType = natType;
+        this.fouder = fouder;
+        this.ip = ip;
+        this.port = port;
+        this.maxPlayers = maxPlayers;
+        this.passworded = passworded;
+        this.rank = rank;
+        this.mapHash = mapHash;
+        this.mapName = mapName;
+        this.title = title;
+        this.gameName = gameName;
     }
 
     public int getBattleId() {
         return battleId;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public String getNatType() {
+    public int getNatType() {
         return natType;
     }
 
@@ -77,23 +85,23 @@ public class Battle {
         return ip;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
-    public String getMaxPlayers() {
+    public int getMaxPlayers() {
         return maxPlayers;
     }
 
-    public String getPassworded() {
+    public int getPassworded() {
         return passworded;
     }
 
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 
-    public String getMapHash() {
+    public int getMapHash() {
         return mapHash;
     }
 
@@ -113,12 +121,8 @@ public class Battle {
         return users;
     }
 
-    public void setUsers(List<String> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    public void addUser(String userName) {
-        users.add(userName);
     }
 
     public void removeUser(String userName) {
@@ -129,11 +133,11 @@ public class Battle {
         this.battleId = battleId;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
-    public void setNatType(String natType) {
+    public void setNatType(int natType) {
         this.natType = natType;
     }
 
@@ -145,23 +149,23 @@ public class Battle {
         this.ip = ip;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 
-    public void setMaxPlayers(String maxPlayers) {
+    public void setMaxPlayers(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
 
-    public void setPassworded(String passworded) {
+    public void setPassworded(int passworded) {
         this.passworded = passworded;
     }
 
-    public void setRank(String rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 
-    public void setMapHash(String mapHash) {
+    public void setMapHash(int mapHash) {
         this.mapHash = mapHash;
     }
 
@@ -175,6 +179,22 @@ public class Battle {
 
     public void setMapName(String mapName) {
         this.mapName = mapName;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

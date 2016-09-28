@@ -14,6 +14,8 @@ public class User implements Serializable {
     private final String country;
     private final String cpu;
     private final String accountId;
+    private String status;
+    private String battlestatus;
 
     public User(String userName, String country, String cpu, String accountId) {
         this.userName = userName;
@@ -36,6 +38,22 @@ public class User implements Serializable {
 
     public String getAccountId() {
         return accountId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBattlestatus() {
+        return battlestatus;
+    }
+
+    public void setBattlestatus(String battlestatus) {
+        this.battlestatus = battlestatus;
     }
 
     @Override
