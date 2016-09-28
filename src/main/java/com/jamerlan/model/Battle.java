@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Battle {
     private List<String> users;
-    private String battleId;
+    private int battleId;
     private String type;
     private String natType;
     private String fouder;
@@ -32,7 +32,7 @@ public class Battle {
 //        this.mapName = mapName;
 //    }
 
-    public Battle(ArrayList<String> users, String battleId, String type, String natType, String fouder, String ip, String port,
+    public Battle(ArrayList<String> users, int battleId, String type, String natType, String fouder, String ip, String port,
                   String maxPlayers, String passworded, String rank, String mapHash) {
         this.battleId = battleId;
         this.type = type;
@@ -52,12 +52,12 @@ public class Battle {
         this.users = users;
     }
 
-    public Battle(List<String> users, String battleId) {
+    public Battle(List<String> users, int battleId) {
         this.users = users;
         this.battleId = battleId;
     }
 
-    public String getBattleId() {
+    public int getBattleId() {
         return battleId;
     }
 
@@ -125,7 +125,7 @@ public class Battle {
         users.remove(userName);
     }
 
-    public void setBattleId(String battleId) {
+    public void setBattleId(int battleId) {
         this.battleId = battleId;
     }
 
