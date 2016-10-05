@@ -23,7 +23,7 @@ public class LeftBattle implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser commandParser = new CommandParser(line);
-        String first = commandParser.getString(" ");
+        String commandName = commandParser.getString(" ");
 
         String userName = commandParser.getString();
 

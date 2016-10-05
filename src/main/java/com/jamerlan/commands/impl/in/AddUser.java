@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Elt on 28.09.2016.
+ //ADDUSER [DoR]Isildur[teh] US 0
  */
-public class ClientStatus implements Command{
+public class AddUser implements Command{
     private String line;
     private ServerState serverState;
 
-    public ClientStatus(String line, ServerState serverState) {
+    public AddUser(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -26,12 +26,10 @@ public class ClientStatus implements Command{
         String commandName = parser.getString(" ");
 
         String userName = parser.getString(" ");
-        String status = parser.getString();
+        String country = parser.getString(" ");
+        String accountId = parser.getString();
 
-        for (User user:serverState.usersOnline) {
-            if(user.getUserName().equals(userName)){
-                user.setStatus(status);
-            }
-        }
+        User user = new User(userName, country,"-", accountId);
+        serverState.getUsersOnline().add(user);
     }
 }

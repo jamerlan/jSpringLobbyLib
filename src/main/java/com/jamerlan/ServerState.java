@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 
 public class ServerState implements Serializable {
@@ -27,24 +26,22 @@ public class ServerState implements Serializable {
         return connection;
     }
 
-    public void addUser(String userLine) {
-        //ADDUSER [DoR]Isildur[teh] US 0
-
-        String[] userParts = userLine.split(" ");
-
-        String userName = userParts[1];
-        String country = userParts[2];
-        String accountId = userParts[3];
-
-        User user = new User(userName, country, "-", accountId);
-        usersOnline.add(user);
-    }
-
     public List<User> getUsersOnline() {
         return usersOnline;
     }
 
-    public void addOpenedBattle(String openedBattleline){
+    public List<Battle> getBattles() {
+        return battles;
+    }
+
+    public void searchBattles() {
+        System.out.println("------------------+");
+        for (Battle battle : battles){
+            System.out.println("             serverState.getBattles = " + battle);
+        }
+        System.out.println("------------------");
+    }
+ /*public void addOpenedBattle(String openedBattleline){
 
         String[] openedBattleParts =  openedBattleline.split(" ");
 
@@ -68,70 +65,5 @@ public class ServerState implements Serializable {
         battles.add(battle);
 
     }
-
-    public List<Battle> getBattles() {
-        return battles;
-    }
-
-    public void addJoinedBattle(String joinedBattleLine){
-
-        String[] joinedBattleParts = joinedBattleLine.split(" ");
-
-        int battleId = Integer.parseInt(joinedBattleParts[1]);
-        String userName = joinedBattleParts[2];
-
-        ListIterator<Battle> iterator = battles.listIterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-
-            if(battle.getBattleId()==(battleId)){
-                for (User user: usersOnline) {
-                    if(userName.equals(user.getUserName())){
-                        battle.getUsers().add(user);
-                    }
-                }
-            }
-        }
-    }
-
-    public void addUpdateBattleInfo(String updateBattleInfoLine){
-        String[] updateBattleInfoParts = updateBattleInfoLine.split(" ");
-
-        int battleId = Integer.parseInt(updateBattleInfoParts[1]);
-        String spectatorCount = updateBattleInfoParts[2];
-        String locked = updateBattleInfoParts[3];
-        int mapHash = Integer.parseInt(updateBattleInfoParts[4]);
-        String mapName = updateBattleInfoParts[5];
-
-        for (Battle battle:battles){
-            if(battle.getBattleId()==(battleId)){
-                battle.setMapHash(mapHash);
-                battle.setMapName(mapName);
-                battle.setLocked(locked);
-                battle.setSpectatorCount(spectatorCount);
-            }
-        }
-    }
-
-    public void addLeftBattle(String leftBattleLine){
-        String[] leftBattleParts = leftBattleLine.split(" ");
-
-        int battleId = Integer.parseInt(leftBattleParts[1]);
-        String userName = leftBattleParts[2];
-
-        ListIterator<Battle> iterator = battles.listIterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            if(battle.getBattleId()==(battleId)){ battle.removeUser(userName); }
-        }
-    }
-
-    public void searchBattles() {
-        System.out.println("------------------+");
-        for (Battle battle : battles){
-            System.out.println("             serverState.getBattles = " + battle);
-        }
-        System.out.println("------------------");
-    }
-
+*/
 }

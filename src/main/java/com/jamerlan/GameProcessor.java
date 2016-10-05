@@ -1,8 +1,6 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.in.ClientStatus;
-import com.jamerlan.commands.impl.in.LeftBattle;
-import com.jamerlan.commands.impl.in.RemoveUser;
+import com.jamerlan.commands.impl.in.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,16 +29,16 @@ public class GameProcessor {
                             new ClientStatus(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if (lineFromServer.startsWith("BATTLEOPENED")){
-                            serverState.addOpenedBattle(lineFromServer);
+                            new BattleOpened(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if (lineFromServer.startsWith("UPDATEBATTLEINFO")){
-                            serverState.addUpdateBattleInfo(lineFromServer);
+                            new UpdateBattleInfo(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("JOINEDBATTLE")){
-                            serverState.addJoinedBattle(lineFromServer);
+                            new JoinedBattle(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("ADDUSER")) {
-                            serverState.addUser(lineFromServer);
+                            new AddUser(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         } else {
                             System.out.println("echo: " + lineFromServer);
                         }

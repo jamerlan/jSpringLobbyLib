@@ -2,18 +2,22 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.model.Battle;
 import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
+import java.util.ListIterator;
 
-public class RemoveUser implements Command {
+/**
+ * Created by Elt on 05.10.2016.
+ */
+public class JoinedBattle implements Command{
     private String line;
     private ServerState serverState;
 
-    public RemoveUser(String line, ServerState serverState) {
+    public JoinedBattle(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -23,12 +27,19 @@ public class RemoveUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
+        int battleId = parser.getInt(" ");
         String userName = parser.getString();
-        Iterator<User> iterator = serverState.getUsersOnline().iterator();
+
+        ListIterator<Battle> iterator = serverState.getBattles().listIterator();
         while (iterator.hasNext()){
-            User user = iterator.next();
-            if(user.getUserName().equals(userName)){
-                iterator.remove();
+            Battle battle = iterator.next();
+
+            if(battle.getBattleId()==(battleId)){
+                for (User user: serverState.getUsersOnline()) {
+                    if(userName.equals(user.getUserName())){
+                        battle.getUsers().add(user);
+                    }
+                }
             }
         }
     }

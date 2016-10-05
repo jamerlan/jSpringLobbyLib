@@ -26,7 +26,7 @@ public class BattleOpened implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
-        String first = parser.getString(" ");
+        String commandName = parser.getString(" ");
 
         int battleId = parser.getInt(" ");
         int type = parser.getInt(" ");
