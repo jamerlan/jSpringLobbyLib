@@ -1,6 +1,6 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.Login;
+import com.jamerlan.commands.impl.out.Login;
 
 import java.io.IOException;
 
@@ -19,7 +19,6 @@ public class Application {
 
         ServerState serverState = new ServerState();
         System.out.println(serverState);
-       //
 
         Connection connection = serverState.getConnection();
         System.out.println(connection);

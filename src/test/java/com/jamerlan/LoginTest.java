@@ -1,7 +1,7 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.JoinBattle;
-import com.jamerlan.commands.impl.Login;
+import com.jamerlan.commands.impl.out.JoinBattle;
+import com.jamerlan.commands.impl.out.Login;
 import org.junit.Test;
 
 import java.io.IOException;

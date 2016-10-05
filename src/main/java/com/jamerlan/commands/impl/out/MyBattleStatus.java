@@ -1,13 +1,13 @@
-package com.jamerlan.commands.impl;
+package com.jamerlan.commands.impl.out;
 
 import com.jamerlan.commands.Command;
 
 import java.io.PrintWriter;
 
 public class MyBattleStatus implements Command{
-     private String arg;
+     private long arg;
 
-     public MyBattleStatus(String arg){
+     public MyBattleStatus(long arg){
          this.arg = arg;
      }
 
