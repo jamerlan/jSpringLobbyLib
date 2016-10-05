@@ -1,8 +1,8 @@
 package com.jamerlan;
 
 
-import com.jamerlan.commands.impl.JoinBattle;
-import com.jamerlan.commands.impl.MyBattleStatus;
+import com.jamerlan.commands.impl.out.JoinBattle;
+import com.jamerlan.commands.impl.out.MyBattleStatus;
 import com.jamerlan.utils.Base64Encoder;
 import com.jamerlan.utils.MD5Encoder;
 
@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class EltTest {
-     static int BattleID = 19220;
+     static int BattleID = 21414;
         //    https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html
         public static void main(String[] args) throws IOException, InterruptedException {
             final String login = "[ru]test";
@@ -51,17 +51,17 @@ public class EltTest {
 
             Thread.sleep(1000);
 
-            //long b = 000001110100000000000100001000110;
+            long b = 1897506288;
             out.println("LOGIN " + login + " " + encodedPassword + " " + cpu + " " + localIp + " " + lobbyNameAndVersion + " " + userId);
             out.println("CHANNELS");
 
-            JoinBattle joinBattle = new JoinBattle(19220);
+            JoinBattle joinBattle = new JoinBattle(21414);
             joinBattle.execute(out);
-
-            MyBattleStatus myBattleStatus = new MyBattleStatus("00000001010000000000010011001010");
+            System.out.println("___________________________________________________________________-");
+            MyBattleStatus myBattleStatus = new MyBattleStatus(b);
             myBattleStatus.execute(out);
-            //out.println("JOINBATTLE " + BattleID);
-            //out.println("MYBATTLESTATUS " + "00000001010000000000010011001110");
+//            out.println("JOINBATTLE " + BattleID);
+//            out.println("MYBATTLESTATUS " + "00000001010000000000010011001110");
 
             /*Changepassword changepass = new Changepassword();
             if(changepass.outputpas("test", "tesst")){

@@ -7,13 +7,15 @@ import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 
-public class RemoveUser implements Command {
+/**
+ //ADDUSER [DoR]Isildur[teh] US 0
+ */
+public class AddUser implements Command{
     private String line;
     private ServerState serverState;
 
-    public RemoveUser(String line, ServerState serverState) {
+    public AddUser(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -23,13 +25,11 @@ public class RemoveUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString();
-        Iterator<User> iterator = serverState.getUsersOnline().iterator();
-        while (iterator.hasNext()){
-            User user = iterator.next();
-            if(user.getUserName().equals(userName)){
-                iterator.remove();
-            }
-        }
+        String userName = parser.getString(" ");
+        String country = parser.getString(" ");
+        String accountId = parser.getString();
+
+        User user = new User(userName, country,"-", accountId);
+        serverState.getUsersOnline().add(user);
     }
 }

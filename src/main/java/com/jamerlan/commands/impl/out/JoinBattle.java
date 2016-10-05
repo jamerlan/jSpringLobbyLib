@@ -1,4 +1,4 @@
-package com.jamerlan.commands.impl;
+package com.jamerlan.commands.impl.out;
 
 
 import com.jamerlan.commands.Command;

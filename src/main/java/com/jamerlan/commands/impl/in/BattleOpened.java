@@ -26,27 +26,22 @@ public class BattleOpened implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
-        String first = parser.getString(" ");
-        System.out.println(first);
+        String commandName = parser.getString(" ");
 
         int battleId = parser.getInt(" ");
-        System.out.println(battleId);
-        System.out.println(parser.getInt(" "));
-        System.out.println(parser.getInt(" "));
-        System.out.println(parser.getString(" "));
-        System.out.println(parser.getString(" "));//ip
-        System.out.println(parser.getInt(" "));//port
-        System.out.println(parser.getInt(" "));
-        System.out.println(parser.getInt(" "));
-        System.out.println(parser.getInt(" "));
-        System.out.println(parser.getInt(" "));
+        int type = parser.getInt(" ");
+        int natType = parser.getInt(" ");
+        String founder = parser.getString(" ");
+        String ip = parser.getString(" ");
+        int port = parser.getInt(" ");
+        int maxPlayers = parser.getInt(" ");
+        int passworded = parser.getInt(" ");
+        int rank = parser.getInt(" ");
+        int mapHash = parser.getInt(" ");
         String map = parser.getString("\t");
-        System.out.println(map);
         String title = parser.getString("\t");
-        System.out.println(title);
         String gameName = parser.getString();
-        System.out.println(gameName);
 
-        serverState.getBattles().add(new Battle(new ArrayList<>(), battleId));
+        serverState.getBattles().add(new Battle(new ArrayList<>(), battleId, type, natType, founder, ip, port, maxPlayers, passworded, rank, mapHash, map, title, gameName));
     }
 }

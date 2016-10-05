@@ -1,6 +1,5 @@
-package com.jamerlan.commands.impl;
+package com.jamerlan.commands.impl.in;
 
-import com.jamerlan.Connection;
 import com.jamerlan.commands.Command;
 
 import java.io.IOException;
