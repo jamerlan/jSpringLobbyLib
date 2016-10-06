@@ -5,9 +5,9 @@ import com.jamerlan.commands.Command;
 import java.io.PrintWriter;
 
 public class MyBattleStatus implements Command{
-     private long arg;
+     private String arg;
 
-     public MyBattleStatus(long arg){
+     public MyBattleStatus(String arg){
          this.arg = arg;
      }
 
