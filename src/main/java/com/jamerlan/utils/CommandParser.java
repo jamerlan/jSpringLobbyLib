@@ -24,4 +24,6 @@ public class CommandParser {
     public String getString() {
         return line;
     }
+
+    public Integer getInt() { return Integer.valueOf(line); }
 }

@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 
 /**
  * ADDSTARTRECT allyNo left top right bottom
+ * TODO left top right bottom have coordinates?
  */
 public class AddStartRect implements Command{
     private int allyNo;

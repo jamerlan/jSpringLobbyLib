@@ -22,6 +22,7 @@ public class AddBot implements Command {
 
     @Override
     public void execute(PrintWriter writer) throws IOException {
+        System.out.println("AddBot command established");
         writer.println("ADDBOT " + name + " " + battleStatus + " " + teamColor);
     }
 }

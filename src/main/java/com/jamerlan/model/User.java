@@ -16,6 +16,9 @@ public class User implements Serializable {
     private final String accountId;
     private String status;
     private String battlestatus;
+    private String teamColor;
+    private String ip;
+    private int port;
 
     public User(String userName, String country, String cpu, String accountId) {
         this.userName = userName;
@@ -54,6 +57,30 @@ public class User implements Serializable {
 
     public void setBattlestatus(String battlestatus) {
         this.battlestatus = battlestatus;
+    }
+
+    public String getTeamColor() {
+        return teamColor;
+    }
+
+    public void setTeamColor(String teamColor) {
+        this.teamColor = teamColor;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     @Override

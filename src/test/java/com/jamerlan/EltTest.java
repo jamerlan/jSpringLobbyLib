@@ -1,8 +1,8 @@
 package com.jamerlan;
 
 
+import com.jamerlan.commands.impl.out.AddBot;
 import com.jamerlan.commands.impl.out.JoinBattle;
-import com.jamerlan.commands.impl.out.MyBattleStatus;
 import com.jamerlan.utils.Base64Encoder;
 import com.jamerlan.utils.MD5Encoder;
 
@@ -55,11 +55,21 @@ public class EltTest {
             out.println("LOGIN " + login + " " + encodedPassword + " " + cpu + " " + localIp + " " + lobbyNameAndVersion + " " + userId);
             out.println("CHANNELS");
 
-            JoinBattle joinBattle = new JoinBattle(21414);
+            JoinBattle joinBattle = new JoinBattle(21471);
             joinBattle.execute(out);
-            System.out.println("___________________________________________________________________-");
-            MyBattleStatus myBattleStatus = new MyBattleStatus(b);
-            myBattleStatus.execute(out);
+            Thread.sleep(3000);
+            out.println("MYBATTLESTATUS " + "00000001010000000000010011001110");
+
+//            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");
+//            myBattleStatus.execute(out);
+            Thread.sleep(2000);
+
+            AddBot addBot = new AddBot("Vuasya", "00001111110000000000011111001110", "00BBGGRR");
+            addBot.execute(out);
+            while (true) {
+                Thread.sleep(100);
+            }
+
 //            out.println("JOINBATTLE " + BattleID);
 //            out.println("MYBATTLESTATUS " + "00000001010000000000010011001110");
 
