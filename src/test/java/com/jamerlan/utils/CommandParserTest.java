@@ -28,4 +28,16 @@ public class CommandParserTest {
         System.out.println(gameName);
 
     }
+
+    @Test
+    public void testEndOfTheLine() {
+        String line = "";
+        CommandParser commandParser = new CommandParser(line);
+        assertTrue(!commandParser.hasNext(" "));
+
+        String line2 = " ";
+        CommandParser commandParser2 = new CommandParser(line2);
+        assertTrue(commandParser2.hasNext(" "));
+    }
 }
+
