@@ -26,4 +26,9 @@ public class CommandParser {
     }
 
     public Integer getInt() { return Integer.valueOf(line); }
+
+    public boolean hasNext(String delimiter) {
+        int index = line.indexOf(delimiter);
+        return index != -1;
+    }
 }
