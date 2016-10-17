@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ * OPENBATTLEFAILED {reason}
  */
-
-public class ConnectUser implements Command {
+public class OpenBattleFailed implements Command{
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public OpenBattleFailed (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,8 +24,10 @@ public class ConnectUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        if (parser.hasNext("")){
+            String reason = parser.getString();
+        }else {
+            String reason = "";
+        }
     }
 }

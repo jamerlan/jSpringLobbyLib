@@ -51,14 +51,15 @@ public class EltTest {
 
             Thread.sleep(1000);
 
-            long b = 1897506288;
+            long b = 16777215;
             out.println("LOGIN " + login + " " + encodedPassword + " " + cpu + " " + localIp + " " + lobbyNameAndVersion + " " + userId);
             out.println("CHANNELS");
 
-            JoinBattle joinBattle = new JoinBattle(21471);
+            JoinBattle joinBattle = new JoinBattle(24111);
             joinBattle.execute(out);
             Thread.sleep(3000);
-            out.println("MYBATTLESTATUS " + "00000001010000000000010011001110");
+            out.println("MYBATTLESTATUS " + b);
+                   // "00000001010000000000010011001110");
 
 //            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");
 //            myBattleStatus.execute(out);

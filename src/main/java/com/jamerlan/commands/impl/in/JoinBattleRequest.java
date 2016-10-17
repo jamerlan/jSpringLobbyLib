@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ JOINBATTLEREQUEST userName ip
+ When the client receives this command, he must send either a JOINBATTLEACCEPT or a JOINBATTLEDENY command to the server.
  */
-
-public class ConnectUser implements Command {
+public class JoinBattleRequest implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public JoinBattleRequest (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,8 +25,7 @@ public class ConnectUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        String userName = parser.getString(" ");
+        String ip = parser.getString();
     }
 }

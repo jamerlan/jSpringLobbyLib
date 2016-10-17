@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ IGNORE userName=value [{reason=value}]
  */
-
-public class ConnectUser implements Command {
+public class Ignore implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public Ignore (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,8 +24,7 @@ public class ConnectUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        String userName = parser.getString("/t");
+        String reason = parser.getString();
     }
 }

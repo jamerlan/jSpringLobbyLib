@@ -3,21 +3,20 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
-import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ListIterator;
+import java.util.Iterator;
 
 /**
- JOINEDBATTLE battleID userName [scriptPassword]
+ REMOVEBOT battleID name
  */
-public class JoinedBattle implements Command{
+public class RemoveBot implements Command {
     private String line;
     private ServerState serverState;
 
-    public JoinedBattle(String line, ServerState serverState) {
+    public RemoveBot(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -27,19 +26,13 @@ public class JoinedBattle implements Command{
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        int battleId = parser.getInt(" ");
-        String userName = parser.getString();
-
-        ListIterator<Battle> iterator = serverState.getBattles().listIterator();
+        int battleID = parser.getInt(" ");
+        String name = parser.getString();
+        Iterator<Battle> iterator = serverState.getBattles().iterator();
         while (iterator.hasNext()){
             Battle battle = iterator.next();
-
-            if(battle.getBattleId()==(battleId)){
-                for (User user: serverState.getUsersOnline()) {
-                    if(userName.equals(user.getUserName())){
-                        battle.getUsers().add(user);
-                    }
-                }
+            if(battle.getBattleId() == battleID){
+                battle.getUsers().remove(name);
             }
         }
     }

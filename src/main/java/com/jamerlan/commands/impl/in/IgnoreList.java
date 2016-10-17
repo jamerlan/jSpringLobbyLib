@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ IGNORELIST userName=value [{reason=value}]
+ TODO: temporary Map of IGNORELISTS from IGNORELISTBEGIN to IGNORELISTEND
  */
-
-public class ConnectUser implements Command {
+public class IgnoreList implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public IgnoreList (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,8 +25,12 @@ public class ConnectUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        String userName = parser.getString("/t");
+        if (parser.hasNext("")){
+            String reason = parser.getString();
+            serverState.getIgnoreList().put(userName,reason);
+        }else{
+            serverState.getIgnoreList().put(userName,"");
+        }
     }
 }

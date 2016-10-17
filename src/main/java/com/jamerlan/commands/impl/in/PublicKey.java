@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ *PUBLICKEY server_public_key session_flag_bits
  */
-
-public class ConnectUser implements Command {
+public class PublicKey implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public PublicKey (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,8 +24,7 @@ public class ConnectUser implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        String serverPublicKey = parser.getString(" ");
+        int sessionFlagBits = parser.getInt();
     }
 }

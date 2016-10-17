@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ ENABLEALLUNITS
  */
-
-public class ConnectUser implements Command {
+public class EnableAllUnits implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public EnableAllUnits(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -23,10 +22,10 @@ public class ConnectUser implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
-        String commandName = parser.getString(" ");
+        String commandName = parser.getString("");
 
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
+        while(parser.hasNext("")){
+            serverState.getUnitsBlackList().clear();
+        }
     }
 }

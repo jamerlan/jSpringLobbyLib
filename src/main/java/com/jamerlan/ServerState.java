@@ -6,10 +6,14 @@ import com.jamerlan.model.User;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class ServerState implements Serializable {
+    private HashMap<String,String> ignoreList = new HashMap<>();
+
+    private ArrayList<String> unitsBlackList = new ArrayList<>();
 
     private List<Battle> battles = new ArrayList<>();
 
@@ -32,6 +36,14 @@ public class ServerState implements Serializable {
 
     public List<Battle> getBattles() {
         return battles;
+    }
+
+    public List<String> getUnitsBlackList() {
+        return unitsBlackList;
+    }
+
+    public HashMap<String,String> getIgnoreList() {
+        return ignoreList;
     }
 
     public void searchBattles() {

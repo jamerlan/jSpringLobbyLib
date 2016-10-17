@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- CONNECTUSER ipAndPort [scriptPassword]
+ MUTELISTEND
  */
-
-public class ConnectUser implements Command {
+public class MuteListEnd implements Command {
     private String line;
     private ServerState serverState;
 
-    public ConnectUser(String line, ServerState serverState) {
+    public MuteListEnd(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -24,9 +23,5 @@ public class ConnectUser implements Command {
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
-
-        String ip = parser.getString(":");
-        int port = parser.getInt(" ");
-        String scriptPassword = parser.getString();
     }
 }

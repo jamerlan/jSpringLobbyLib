@@ -9,6 +9,7 @@ import java.io.IOException;
  */
 public class Application {
     public static void main(String[] args) throws IOException, InterruptedException {
+
         final String login = "[ru]test";
         final String password = "test";
 
