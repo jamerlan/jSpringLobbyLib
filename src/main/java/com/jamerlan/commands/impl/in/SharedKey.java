@@ -6,17 +6,16 @@ import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 /**
- REMOVESCRIPTTAGS key1 [key2] [key3] [...]
- TODO: add keys?
+ SHAREDKEY key_status key_digest [extra_data]
+ TODO: delimiter of key_digest can be ""?
  */
-public class RemoveScriptTags implements Command {
+public class SharedKey implements Command {
     private String line;
     private ServerState serverState;
 
-    public RemoveScriptTags(String line, ServerState serverState) {
+    public SharedKey (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -26,11 +25,10 @@ public class RemoveScriptTags implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        ArrayList<String> keys = new ArrayList<>();
-        keys.add(parser.getString("/t"));
-        while(parser.hasNext("")){
-            keys.add(parser.getString("/t"));
+        String keyStatus = parser.getString(" ");
+        String keyDigest = parser.getString(" ");
+        if (parser.hasNext("")) {
+            String extraData = parser.getString();
         }
-
     }
 }

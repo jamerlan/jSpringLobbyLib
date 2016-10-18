@@ -9,14 +9,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- REMOVESCRIPTTAGS key1 [key2] [key3] [...]
- TODO: add keys?
+ SETSCRIPTTAGS {pair1} [{pair2}] [{pair3}] [{...}]
  */
-public class RemoveScriptTags implements Command {
+public class SetScriptTags implements Command {
     private String line;
     private ServerState serverState;
 
-    public RemoveScriptTags(String line, ServerState serverState) {
+    public SetScriptTags(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -28,9 +27,8 @@ public class RemoveScriptTags implements Command {
 
         ArrayList<String> keys = new ArrayList<>();
         keys.add(parser.getString("/t"));
-        while(parser.hasNext("")){
+        while (parser.hasNext("")) {
             keys.add(parser.getString("/t"));
         }
-
     }
 }

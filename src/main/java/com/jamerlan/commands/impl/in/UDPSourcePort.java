@@ -6,17 +6,18 @@ import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 /**
- REMOVESCRIPTTAGS key1 [key2] [key3] [...]
- TODO: add keys?
+ UDPSOURCEPORT port
+ Sent as a response to a client's UDP packet (used with "hole punching" NAT traversal technique). For more info, see the Hole punching section in the beginnig of this document.
+
+ UDPSOURCEPORT 52361
  */
-public class RemoveScriptTags implements Command {
+public class UDPSourcePort implements Command {
     private String line;
     private ServerState serverState;
 
-    public RemoveScriptTags(String line, ServerState serverState) {
+    public UDPSourcePort (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -26,11 +27,6 @@ public class RemoveScriptTags implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        ArrayList<String> keys = new ArrayList<>();
-        keys.add(parser.getString("/t"));
-        while(parser.hasNext("")){
-            keys.add(parser.getString("/t"));
-        }
-
+        int port = parser.getInt();
     }
 }
