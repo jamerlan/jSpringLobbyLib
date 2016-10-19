@@ -57,8 +57,9 @@ public class EltTest {
             JoinBattle joinBattle = new JoinBattle(23853);
             joinBattle.execute(out);
             Thread.sleep(3000);
-            out.println("MYBATTLESTATUS " + b);
+//            out.println("MYBATTLESTATUS " + b);
                    // "00000001010000000000010011001110");
+            out.println("JOIN " + "techa");
 //            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");
 //            myBattleStatus.execute(out);
             Thread.sleep(2000);

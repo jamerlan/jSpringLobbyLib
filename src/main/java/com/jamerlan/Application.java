@@ -29,7 +29,7 @@ public class Application {
 
         Thread.sleep(10000);
         serverState.searchBattles();
-
+        connection.getWriter().println("JOIN " + "techa");
         while (true) {
             Thread.sleep(100);
         }

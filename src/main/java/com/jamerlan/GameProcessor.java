@@ -37,6 +37,15 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("JOINEDBATTLE")){
                             new JoinedBattle(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
+                        if(lineFromServer.startsWith("CLIENTS")){
+                            new Clients(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
+                        if(lineFromServer.startsWith("CHANNELTOPIC")){
+                            new ChannelTopic(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
+                        if(lineFromServer.startsWith("LEFT")){
+                            new Left(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
                         if(lineFromServer.startsWith("ADDUSER")) {
                             new AddUser(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         } else {
