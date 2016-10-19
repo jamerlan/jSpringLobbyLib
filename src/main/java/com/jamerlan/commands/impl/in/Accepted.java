@@ -1,19 +1,27 @@
 package com.jamerlan.commands.impl.in;
 
+import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Accepted implements Command {
-    private String userName;
+    private String line;
+    private ServerState serverState;
 
-    public Accepted(String userName) {
-        this.userName = userName;
+    public Accepted(String line, ServerState serverState) {
+        this.line = line;
+        this.serverState = serverState;
     }
 
     @Override
     public void execute(PrintWriter writer) throws IOException {
-        System.out.println(userName);
+        CommandParser parser = new CommandParser(line);
+        String commandName = parser.getString(" ");
+
+        String userName = parser.getString(" ");
     }
 }
+
