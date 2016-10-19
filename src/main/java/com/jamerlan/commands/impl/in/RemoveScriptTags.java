@@ -28,7 +28,7 @@ public class RemoveScriptTags implements Command {
 
         ArrayList<String> keys = new ArrayList<>();
         keys.add(parser.getString("/t"));
-        while(parser.hasNext("")){
+        while(parser.hasNext(" ")){
             keys.add(parser.getString("/t"));
         }
 

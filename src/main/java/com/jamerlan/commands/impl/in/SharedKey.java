@@ -27,7 +27,7 @@ public class SharedKey implements Command {
 
         String keyStatus = parser.getString(" ");
         String keyDigest = parser.getString(" ");
-        if (parser.hasNext("")) {
+        if (parser.hasNext(" ")) {
             String extraData = parser.getString();
         }
     }

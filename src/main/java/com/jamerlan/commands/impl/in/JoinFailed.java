@@ -25,7 +25,7 @@ public class JoinFailed implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
-        if (parser.hasNext("")){
+        if (parser.hasNext(" ")){
             String reason = parser.getString();
         }else {
             String reason = "";

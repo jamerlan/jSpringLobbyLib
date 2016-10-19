@@ -29,7 +29,7 @@ public class MuteList implements Command {
         String commandName = parser.getString(" ");
 
         String userName = parser.getString(" ");
-        if (parser.hasNext("")){
+        if (parser.hasNext(" ")){
             String description = parser.getString();
             System.out.println(commandName = " " + userName + " " + description);
         }else{

@@ -26,7 +26,7 @@ public class IgnoreList implements Command {
         String commandName = parser.getString(" ");
 
         String userName = parser.getString("/t");
-        if (parser.hasNext("")){
+        if (parser.hasNext(" ")){
             String reason = parser.getString();
             serverState.getIgnoreList().put(userName,reason);
         }else{

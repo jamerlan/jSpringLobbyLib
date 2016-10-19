@@ -24,7 +24,7 @@ public class EnableUnits implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        while(parser.hasNext("")){
+        while(parser.hasNext(" ")){
             serverState.getUnitsBlackList().remove(parser.getString(" "));
         }
     }

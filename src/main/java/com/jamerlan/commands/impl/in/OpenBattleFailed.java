@@ -24,7 +24,7 @@ public class OpenBattleFailed implements Command{
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        if (parser.hasNext("")){
+        if (parser.hasNext(" ")){
             String reason = parser.getString();
         }else {
             String reason = "";
