@@ -11,9 +11,9 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private final String userName;
-    private final String country;
-    private final String cpu;
-    private final String accountId;
+    private String country;
+    private String cpu;
+    private String accountId;
     private String status;
     private String battlestatus;
     private String teamColor;
@@ -25,6 +25,12 @@ public class User implements Serializable {
         this.country = country;
         this.cpu = cpu;
         this.accountId = accountId;
+    }
+
+    public User(String userName, String battlestatus, String teamColor) {
+        this.userName = userName;
+        this.battlestatus = battlestatus;
+        this.teamColor = teamColor;
     }
 
     public String getUserName() {

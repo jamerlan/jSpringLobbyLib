@@ -7,11 +7,14 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ *JOINFAILED chanName {reason}
+ */
+public class JoinFailed implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public JoinFailed (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +24,11 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        String chanName = parser.getString(" ");
+        if (parser.hasNext(" ")){
+            String reason = parser.getString();
+        }else {
+            String reason = "";
+        }
     }
 }
-

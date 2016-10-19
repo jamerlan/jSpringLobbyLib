@@ -7,11 +7,15 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ HOSTPORT port
+ TODO: need create variable "currentBattle", and HostPort will change port of them.
+ */
+public class HostPort implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public HostPort (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +25,6 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        int port = parser.getInt();
     }
 }
-

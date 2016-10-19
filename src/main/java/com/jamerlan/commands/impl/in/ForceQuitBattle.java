@@ -7,11 +7,15 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ * FORCEQUITBATTLE
+ *
+ */
+public class ForceQuitBattle implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public ForceQuitBattle (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +25,5 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
     }
 }
-

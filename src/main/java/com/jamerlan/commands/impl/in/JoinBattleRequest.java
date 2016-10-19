@@ -7,11 +7,15 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ JOINBATTLEREQUEST userName ip
+ When the client receives this command, he must send either a JOINBATTLEACCEPT or a JOINBATTLEDENY command to the server.
+ */
+public class JoinBattleRequest implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public JoinBattleRequest (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -22,6 +26,6 @@ public class Accepted implements Command {
         String commandName = parser.getString(" ");
 
         String userName = parser.getString(" ");
+        String ip = parser.getString();
     }
 }
-

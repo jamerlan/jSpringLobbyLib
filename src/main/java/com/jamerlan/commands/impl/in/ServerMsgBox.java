@@ -7,11 +7,14 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ SERVERMSGBOX {message} [{url}]
+ */
+public class ServerMsgBox implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public ServerMsgBox (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +24,7 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        String message = parser.getString("/t");
+        String url = parser.getString();
     }
 }
-

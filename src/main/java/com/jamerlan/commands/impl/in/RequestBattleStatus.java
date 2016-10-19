@@ -7,11 +7,15 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ REQUESTBATTLESTATUS
+ TODO: send to server MyBattleStatus;
+ */
+public class RequestBattleStatus implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public RequestBattleStatus(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -20,8 +24,5 @@ public class Accepted implements Command {
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
-
-        String userName = parser.getString(" ");
     }
 }
-

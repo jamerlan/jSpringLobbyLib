@@ -9,6 +9,7 @@ import java.io.IOException;
  */
 public class Application {
     public static void main(String[] args) throws IOException, InterruptedException {
+
         final String login = "[ru]test";
         final String password = "test";
 
@@ -28,7 +29,6 @@ public class Application {
 
         Thread.sleep(10000);
         serverState.searchBattles();
-
         while (true) {
             Thread.sleep(100);
         }

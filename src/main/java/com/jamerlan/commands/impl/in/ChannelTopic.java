@@ -26,9 +26,9 @@ public class ChannelTopic implements Command {
 
         String chanName = parser.getString(" ");
         String author = parser.getString(" ");
-        String changedTime = parser.getString("\t");
+        String changedTime = parser.getString(" ");
         String topic = parser.getString();
 
-        System.out.println(commandName + " " + chanName + " " + author + " " + changedTime + " " + topic);
+        System.out.println(commandName + " " + chanName + " " + author + " " + changedTime + " : " + topic);
     }
 }

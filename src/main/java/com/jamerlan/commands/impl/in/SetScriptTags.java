@@ -6,12 +6,16 @@ import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
-public class Accepted implements Command {
+/**
+ SETSCRIPTTAGS {pair1} [{pair2}] [{pair3}] [{...}]
+ */
+public class SetScriptTags implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public SetScriptTags(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +25,10 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        ArrayList<String> keys = new ArrayList<>();
+        keys.add(parser.getString("/t"));
+        while (parser.hasNext(" ")) {
+            keys.add(parser.getString("/t"));
+        }
     }
 }
-

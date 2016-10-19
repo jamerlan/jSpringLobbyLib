@@ -7,11 +7,15 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Accepted implements Command {
+/**
+ FORCEJOINBATTLE destinationBattleID [destinationBattlePassword]
+ TODO: The receiving client must subsequently comply by sending a JOINBATTLE command to the server. See the Match-Making section in the beginning of this document for more details.
+ */
+public class ForceJoinBattle implements Command {
     private String line;
     private ServerState serverState;
 
-    public Accepted(String line, ServerState serverState) {
+    public ForceJoinBattle(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -21,7 +25,7 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        int destinationBattleID = parser.getInt("/t");
+        String destinationBattlePassword = parser.getString();
     }
 }
-
