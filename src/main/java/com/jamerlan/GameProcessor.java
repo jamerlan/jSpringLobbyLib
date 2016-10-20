@@ -18,7 +18,7 @@ public class GameProcessor {
             public void run() {
                 String lineFromServer;
                 try {
-                    while ((lineFromServer = reader.readLine()) != null) {
+                    while (((lineFromServer = reader.readLine()) != null)) {
                         if(lineFromServer.startsWith("ACCEPTED")){
                             new Accepted(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
@@ -61,7 +61,7 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("CLIENTIPPORT")) {
                             new ClientIpPort(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("CLIENTS")){
+                        if(lineFromServer.startsWith("CLIENTS ")){
                             new Clients(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if (lineFromServer.startsWith("CLIENTSTATUS")){

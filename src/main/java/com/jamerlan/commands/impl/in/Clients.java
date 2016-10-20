@@ -33,9 +33,6 @@ public class Clients implements Command {
         ArrayList<String> clientsList = new ArrayList<>();
         while(parser.hasNext(" ")){
             clientsList.add(parser.getString(" "));
-//            String clients = parser.getString(" ");
         }
-
-        System.out.println(commandName + " " + chanName + " : " + clientsList);
     }
 }

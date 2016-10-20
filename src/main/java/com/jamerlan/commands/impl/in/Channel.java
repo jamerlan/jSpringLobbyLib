@@ -9,6 +9,12 @@ import java.io.PrintWriter;
 
 /**
  CHANNEL chanName userCount [{topic}]
+
+ TODO: добавить обработку многострочных топиков
+
+ " echo: CHANNEL Cybernetic 1 ################
+ echo: \n################
+ echo: \nNext round of PlanetWars there will be only 2 factions, Dynasty of Humanity or Machine Empire. I decided for Cybers to go to Machine Empire, because I don't like Dynasty so much. If someone doesn't feel comfortable with that decission, pm Saktoth that you want to go Dynasty  "
  */
 public class Channel implements Command {
     private String line;

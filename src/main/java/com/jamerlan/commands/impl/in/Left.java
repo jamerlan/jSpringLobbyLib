@@ -26,10 +26,12 @@ public class Left implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
-        String userName = parser.getString(" ");
+
         if (parser.hasNext(" ")){
+            String userName = parser.getString(" ");
             String reason = parser.getString();
         }else {
+            String userName = parser.getString();
             String reason = "";
         }
 
