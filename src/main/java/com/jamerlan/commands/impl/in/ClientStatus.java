@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Elt on 28.09.2016.
+ CLIENTSTATUS userName status
  */
 public class ClientStatus implements Command{
     private String line;

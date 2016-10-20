@@ -26,5 +26,6 @@ public class MuteListBegin implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
+        serverState.setCurrentMuteChannel(chanName);
     }
 }
