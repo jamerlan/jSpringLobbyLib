@@ -23,7 +23,7 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        String userName = parser.getString();
     }
 }
 

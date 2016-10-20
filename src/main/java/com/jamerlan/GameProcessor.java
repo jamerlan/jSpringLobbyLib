@@ -46,6 +46,9 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("BROADCAST")) {
                             new Broadcast(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
+                        if(lineFromServer.startsWith("CHANNEL")) {
+                            new Channel(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
                         if(lineFromServer.startsWith("CHANNELMESSAGE")) {
                             new ChannelMessage(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
@@ -241,7 +244,7 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("SIGNEDMSG")) {
                             new SignedMsg(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("TASSERVER")) {
+                        if(lineFromServer.startsWith("TASServer")) {
                             new TASServer(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("TESTLOGINACCEPT")) {

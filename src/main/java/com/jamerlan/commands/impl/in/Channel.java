@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- LEFT chanName userName [{reason}]
- TODO: List of Users of Channel - userName
+ CHANNEL chanName userCount [{topic}]
  */
-public class Left implements Command {
+public class Channel implements Command {
     private String line;
     private ServerState serverState;
 
-    public Left(String line, ServerState serverState) {
+    public Channel(String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -26,11 +25,11 @@ public class Left implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
-        String userName = parser.getString(" ");
+        String userCount = parser.getString(" ");
         if (parser.hasNext(" ")){
-            String reason = parser.getString();
+            String topic = parser.getString();
         }else {
-            String reason = "";
+            String topic = "";
         }
 
     }
