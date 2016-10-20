@@ -10,10 +10,6 @@ import java.util.ArrayList;
 
 /**
  CLIENTS chanName {clients}
- TODO The server takes the list of clients in a channel, separates it into several lines and sends each line seperately.
- This ensures no line is too long, because the client may have some limit set on the maximum line-length and it could
- ignore the line if it was too long. Also note, that the clients user-name is sent in this list too!
- TODO Channel ?stream?
  */
 public class Clients implements Command {
     private String line;
