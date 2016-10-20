@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  LEFT chanName userName [{reason}]
- TODO: List of Users of Channel - userName
  */
 public class Left implements Command {
     private String line;

@@ -7,7 +7,6 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  COMPFLAGS [compFlag1] [compFlag2] [...]
@@ -27,10 +26,8 @@ public class CompFlags implements Command {
         String commandName = parser.getString(" ");
 
         ArrayList<String> compflags = new ArrayList<>();
-        Iterator<String> iterator = compflags.iterator();
-        while(iterator.hasNext()){
+        while (parser.hasNext("")){
             compflags.add(parser.getString(" "));
         }
-
     }
 }
