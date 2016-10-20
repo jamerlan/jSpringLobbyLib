@@ -15,7 +15,10 @@ public class AddBot implements Command {
     private String line;
     private ServerState serverState;
 
-
+    public AddBot(String line, ServerState serverState) {
+        this.line = line;
+        this.serverState = serverState;
+    }
 
     @Override
     public void execute(PrintWriter writer) throws IOException {

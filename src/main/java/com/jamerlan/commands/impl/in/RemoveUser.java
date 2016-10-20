@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 
+/*REMOVEUSER userName*/
+
 public class RemoveUser implements Command {
     private String line;
     private ServerState serverState;

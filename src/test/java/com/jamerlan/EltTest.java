@@ -15,8 +15,8 @@ public class EltTest {
      static int BattleID = 21414;
         //    https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html
         public static void main(String[] args) throws IOException, InterruptedException {
-            final String login = "[ru]test";
-            final String password = "test";
+            final String login = "[ru]test1";
+            final String password = "test1";
             final String cpu = "8888";
             final String localIp = "*";
             final String lobbyNameAndVersion = "java test";
@@ -59,7 +59,7 @@ public class EltTest {
             Thread.sleep(3000);
 //            out.println("MYBATTLESTATUS " + b);
                    // "00000001010000000000010011001110");
-            out.println("JOIN " + "techa");
+            out.println("CONFIRMAGREEMENT");
 //            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");
 //            myBattleStatus.execute(out);
             Thread.sleep(2000);
