@@ -2,10 +2,12 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.model.Channel;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * MUTELIST {mute description}
@@ -28,12 +30,13 @@ public class MuteList implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
-        if (parser.hasNext(" ")){
-            String description = parser.getString();
-            System.out.println(commandName = " " + userName + " " + description);
-        }else{
-            System.out.println(commandName = " " + userName);
+        String muteDescription = parser.getString();
+
+        ArrayList<Channel> channels = (ArrayList<Channel>) serverState.getChannels();
+        for (Channel channel:serverState.getChannels()) {
+            if(channel.getChanName().equals(serverState.getCurrentMuteChannel())){
+                channel.getMutelist().add(muteDescription);
+            }
         }
     }
 }

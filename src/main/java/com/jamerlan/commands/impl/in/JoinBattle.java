@@ -2,6 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.model.Battle;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
@@ -9,7 +10,6 @@ import java.io.PrintWriter;
 
 /**
  JOINBATTLE battleID hashCode
- TODO: create currentBattle
  */
 public class JoinBattle implements Command {
     private String line;
@@ -27,5 +27,11 @@ public class JoinBattle implements Command {
 
         int battleID = parser.getInt(" ");
         String hashCode = parser.getString();
+
+        for (Battle battle:serverState.getBattles()) {
+            if(battleID == (battle.getBattleId())) {
+                serverState.getMyUser().setBattle(battle);
+            }
+        }
     }
 }

@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- JOINBATTLEREQUEST userName ip
- TODO: When the client receives this command, he must send either a JOINBATTLEACCEPT or a JOINBATTLEDENY command to the server.
+ * SERVERMSG {message}
  */
-public class JoinBattleRequest implements Command {
+public class ServerMsg implements Command {
     private String line;
     private ServerState serverState;
 
-    public JoinBattleRequest (String line, ServerState serverState) {
+    public ServerMsg (String line, ServerState serverState) {
         this.line = line;
         this.serverState = serverState;
     }
@@ -25,7 +24,8 @@ public class JoinBattleRequest implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
-        String ip = parser.getString();
+        String message = parser.getString();
+
+        System.out.println(commandName + " : " + message);
     }
 }

@@ -24,6 +24,13 @@ public class Join implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String join = parser.getString();
+        String chanName = parser.getString();
+
+        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
+            if(chanName.equals(channel.getChanName())) {
+                serverState.getMyUser().getChannelList().add(channel);
+            }
+        }
+
     }
 }

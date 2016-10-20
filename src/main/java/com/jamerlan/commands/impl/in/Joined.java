@@ -27,5 +27,11 @@ public class Joined implements Command {
 
         String chanName = parser.getString(" ");
         String userName = parser.getString();
+
+        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
+            if(chanName.equals(channel.getChanName())) {
+                channel.getClients().add(userName);
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.jamerlan.commands.impl.in;
 
+import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,21 +10,22 @@ import java.io.PrintWriter;
 //TASSERVER protocolVersion springVersion udpPort serverMode
 //TASServer 0.36 96.0 8201 0
 public class TASServer implements Command {
+    private String line;
+    private ServerState serverState;
 
-    private final String protocolVersion;
-    private final String springVersion;
-    private final String udpPort;
-    private final String serverMode;
-
-    public TASServer(String protocolVersion, String springVersion, String udpPort, String serverMode) {
-        this.protocolVersion = protocolVersion;
-        this.springVersion = springVersion;
-        this.udpPort = udpPort;
-        this.serverMode = serverMode;
+    public TASServer (String line, ServerState serverState) {
+        this.line = line;
+        this.serverState = serverState;
     }
 
     @Override
     public void execute(PrintWriter writer) throws IOException {
+        CommandParser parser = new CommandParser(line);
+        String commandName = parser.getString(" ");
 
+        String protocolVersion = parser.getString(" ");
+        String springVersion = parser.getString(" ");
+        String udpPort = parser.getString(" ");
+        String serverMode = parser.getString();
     }
 }

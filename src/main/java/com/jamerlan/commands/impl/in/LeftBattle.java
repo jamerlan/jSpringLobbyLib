@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 
+/*LEFTBATTLE battleID userName*/
+
 public class LeftBattle implements Command {
     private String line;
     private ServerState serverState;

@@ -7,6 +7,8 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/*ACCEPTED userName*/
+
 public class Accepted implements Command {
     private String line;
     private ServerState serverState;
@@ -21,7 +23,7 @@ public class Accepted implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
+        String userName = parser.getString();
     }
 }
 

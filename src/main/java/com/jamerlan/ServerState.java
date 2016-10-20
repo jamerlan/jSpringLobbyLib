@@ -1,6 +1,8 @@
 package com.jamerlan;
 
 import com.jamerlan.model.Battle;
+import com.jamerlan.model.Channel;
+import com.jamerlan.model.MyUser;
 import com.jamerlan.model.User;
 
 import java.io.IOException;
@@ -11,7 +13,11 @@ import java.util.List;
 
 
 public class ServerState implements Serializable {
-    private HashMap<String,String> ignoreList = new HashMap<>();
+    MyUser myUser = new MyUser("[ru]test","test", 8888, "*", "java test", 34523452);
+
+    private String currentMuteChannel;
+
+    private ArrayList<Channel> channels = new ArrayList<>();
 
     private ArrayList<String> unitsBlackList = new ArrayList<>();
 
@@ -42,8 +48,28 @@ public class ServerState implements Serializable {
         return unitsBlackList;
     }
 
+    public MyUser getMyUser() {
+        return myUser;
+    }
+
+    public void setMyUser(MyUser myUser) {
+        this.myUser = myUser;
+    }
+
     public HashMap<String,String> getIgnoreList() {
-        return ignoreList;
+        return myUser.getIgnoreList();
+    }
+
+    public List<Channel> getChannels() {
+        return channels;
+    }
+
+    public void setCurrentMuteChannel(String currentMuteChannel) {
+        this.currentMuteChannel = currentMuteChannel;
+    }
+
+    public String getCurrentMuteChannel() {
+        return currentMuteChannel;
     }
 
     public void searchBattles() {

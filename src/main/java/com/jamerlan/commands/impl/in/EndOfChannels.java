@@ -23,6 +23,6 @@ public class EndOfChannels implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
-        String commandName = parser.getString(" ");
+        String commandName = parser.getString();
     }
 }

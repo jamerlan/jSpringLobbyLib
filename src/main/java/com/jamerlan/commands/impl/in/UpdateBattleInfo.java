@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 
 
 /**
- * Created by Elt on 05.10.2016.
+ * UPDATEBATTLEINFO battleID spectatorCount locked mapHash {mapName}
  */
 public class UpdateBattleInfo implements Command{
     private String line;

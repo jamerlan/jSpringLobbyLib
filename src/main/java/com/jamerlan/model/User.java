@@ -96,6 +96,11 @@ public class User implements Serializable {
                 ", country='" + country + '\'' +
                 ", cpu='" + cpu + '\'' +
                 ", accountId='" + accountId + '\'' +
+                ", status='" + status + '\'' +
+                ", battlestatus='" + battlestatus + '\'' +
+                ", teamColor='" + teamColor + '\'' +
+                ", ip='" + ip + '\'' +
+                ", port=" + port +
                 '}';
     }
 }

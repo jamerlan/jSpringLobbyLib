@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  LEFT chanName userName [{reason}]
- TODO: List of Users of Channel - userName
  */
 public class Left implements Command {
     private String line;
@@ -26,10 +25,17 @@ public class Left implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
-        String userName = parser.getString("/t");
-        if (parser.hasNext("/t")){
+
+        if (parser.hasNext(" ")){
+            String userName = parser.getString(" ");
             String reason = parser.getString();
+            for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
+                if(chanName.equals(channel.getChanName())) {
+                    channel.getClients().remove(userName);
+                }
+            }
         }else {
+            String userName = parser.getString();
             String reason = "";
         }
 
