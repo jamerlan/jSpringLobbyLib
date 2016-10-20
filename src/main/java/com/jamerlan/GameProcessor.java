@@ -235,6 +235,9 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("SAYPRIVATEEX")) {
                             new SayPrivateEx(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
+                        if(lineFromServer.startsWith("SERVERMSG")) {
+                            new ServerMsg(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
                         if(lineFromServer.startsWith("SERVERMSGBOX")) {
                             new ServerMsgBox(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
