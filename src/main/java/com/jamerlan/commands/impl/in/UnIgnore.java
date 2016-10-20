@@ -25,5 +25,6 @@ public class UnIgnore implements Command {
         String commandName = parser.getString(" ");
 
         String userName = parser.getString();
+        serverState.getIgnoreList().remove(userName);
     }
 }
