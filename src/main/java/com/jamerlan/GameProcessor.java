@@ -145,6 +145,9 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("LEFTBATTLE")) {
                             new LeftBattle(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
+                        if(lineFromServer.startsWith("LOGININFOEND")) {
+                            new LoginInfoEnd(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
+                        }else
                         if(lineFromServer.startsWith("MOTD")) {
                             new Motd(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
