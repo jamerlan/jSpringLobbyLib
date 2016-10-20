@@ -10,13 +10,13 @@ import java.io.IOException;
 public class Application {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        final String login = "[ru]test";
-        final String password = "test";
-
-        final int cpu = 8888;
-        final String localIp = "*";
-        final String lobbyNameAndVersion = "java test";
-        final int userId = 34523452;
+//        final String login = "[ru]test";
+//        final String password = "test";
+//
+//        final int cpu = 8888;
+//        final String localIp = "*";
+//        final String lobbyNameAndVersion = "java test";
+//        final int userId = 34523452;
 
         ServerState serverState = new ServerState();
         System.out.println(serverState);
@@ -24,7 +24,7 @@ public class Application {
         Connection connection = serverState.getConnection();
         System.out.println(connection);
 
-        Login loginCommand = new Login(login, password, cpu, localIp, lobbyNameAndVersion, userId);
+        Login loginCommand = new Login(serverState.getMyUser().getUserName(), serverState.getMyUser().getPassword(), serverState.getMyUser().getCpu(), serverState.getMyUser().getLocalIp(), serverState.getMyUser().getLobbyNameAndVersion(), serverState.getMyUser().getUserId());
         loginCommand.execute(connection.getWriter());
 
         Thread.sleep(10000);

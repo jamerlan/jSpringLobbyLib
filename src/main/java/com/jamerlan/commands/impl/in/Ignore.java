@@ -26,5 +26,6 @@ public class Ignore implements Command {
 
         String userName = parser.getString("/t");
         String reason = parser.getString();
+
     }
 }
