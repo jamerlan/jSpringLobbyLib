@@ -13,6 +13,7 @@ public class MyUser {
     private final String localIp;
     private final String lobbyNameAndVersion;
     private final int userId;
+    private Battle battle;
     private ArrayList<Channel> channelList;
     private HashMap<String, String> ignoreList;
 
@@ -63,5 +64,13 @@ public class MyUser {
 
     public void setIgnoreList(HashMap<String, String> ignoreList) {
         this.ignoreList = ignoreList;
+    }
+
+    public Battle getBattle() {
+        return battle;
+    }
+
+    public void setBattle(Battle battle) {
+        this.battle = battle;
     }
 }

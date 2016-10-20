@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 /**
  JOINBATTLEREQUEST userName ip
- When the client receives this command, he must send either a JOINBATTLEACCEPT or a JOINBATTLEDENY command to the server.
+ TODO: When the client receives this command, he must send either a JOINBATTLEACCEPT or a JOINBATTLEDENY command to the server.
  */
 public class JoinBattleRequest implements Command {
     private String line;
