@@ -30,6 +30,11 @@ public class Left implements Command {
         if (parser.hasNext(" ")){
             String userName = parser.getString(" ");
             String reason = parser.getString();
+            for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
+                if(chanName.equals(channel.getChanName())) {
+                    channel.getClients().remove(userName);
+                }
+            }
         }else {
             String userName = parser.getString();
             String reason = "";

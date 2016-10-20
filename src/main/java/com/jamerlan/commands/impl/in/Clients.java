@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  CLIENTS chanName {clients}
+
  */
 public class Clients implements Command {
     private String line;
@@ -27,8 +28,15 @@ public class Clients implements Command {
 
         String chanName = parser.getString(" ");
         ArrayList<String> clientsList = new ArrayList<>();
-        while(parser.hasNext(" ")){
-            clientsList.add(parser.getString(" "));
+        
+
+        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
+            if(chanName.equals(channel.getChanName())) {
+                while(parser.hasNext(" ")){
+                    String client = parser.getString(" ");
+                    channel.getClients().add(client);
+                }
+            }
         }
     }
 }

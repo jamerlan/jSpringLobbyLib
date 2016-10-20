@@ -11,7 +11,7 @@ public class Channel {
     private int userCount;
     private String topic;
     private ArrayList<String> mutelist;
-    private ArrayList<User> clients;
+    private ArrayList<String> clients;
 
     public Channel(String chanName, int userCount, String topic) {
         this.chanName = chanName;
@@ -62,11 +62,11 @@ public class Channel {
         this.mutelist = mutelist;
     }
 
-    public ArrayList<User> getClients() {
+    public ArrayList<String> getClients() {
         return clients;
     }
 
-    public void setClients(ArrayList<User> clients) {
+    public void setClients(ArrayList<String> clients) {
         this.clients = clients;
     }
 }
