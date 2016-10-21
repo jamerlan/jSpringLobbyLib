@@ -2,7 +2,6 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
@@ -29,10 +28,10 @@ public class ClientStatusTest implements Command{
         String userName = parser.getString(" ");
         String status = parser.getString(" ");
 
-        for (User user:serverState.usersOnline) {
-            if(user.getUserName().equals(userName)){
-                user.setStatus(status);
-            }
-        }
+//        for (User user:serverState.usersOnline) {
+//            if(user.getUserName().equals(userName)){
+//                user.setStatus(status);
+//            }
+//        }
     }
 }
