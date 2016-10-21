@@ -21,7 +21,9 @@ public class ServerState implements Serializable {
 
     private List<Battle> battles = new ArrayList<>();
 
-    public Set<User> usersOnline = new HashSet<>();
+    private Battle hostedBattle;
+
+    private Set<User> usersOnline = new HashSet<>();
 
     private Connection connection = new Connection();
 
@@ -68,6 +70,14 @@ public class ServerState implements Serializable {
 
     public String getCurrentMuteChannel() {
         return currentMuteChannel;
+    }
+
+    public Battle getHostedBattle() {
+        return hostedBattle;
+    }
+
+    public void setHostedBattle(Battle hostedBattle) {
+        this.hostedBattle = hostedBattle;
     }
 
     public void searchBattles() {

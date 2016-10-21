@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 /**
  RING userName
- TODO: client should play the "ring" sound if userName == our user name;
+ TODO: client should play the "ring" sound
  */
 public class Ring implements Command {
     private String line;
@@ -26,5 +26,8 @@ public class Ring implements Command {
         String commandName = parser.getString(" ");
 
         String userName = parser.getString();
+        if (userName==serverState.getAccount().getLogin()){
+            System.out.println("RING!!!!!");
+        }
     }
 }

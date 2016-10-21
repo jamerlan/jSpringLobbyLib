@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  IGNORELIST userName=value [{reason=value}]
- TODO: temporary Map of IGNORELISTS from IGNORELISTBEGIN to IGNORELISTEND
  */
 public class IgnoreList implements Command {
     private String line;
