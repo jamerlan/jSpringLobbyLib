@@ -3,6 +3,7 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,6 +30,10 @@ public class ChannelTopic implements Command {
         String changedTime = parser.getString(" ");
         String topic = parser.getString();
 
-        System.out.println(commandName + " " + chanName + " " + author + " " + changedTime + " : " + topic);
+        SearchChannel searchChannel = new SearchChannel();
+        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
+        channel.setTopicAuthor(author);
+        channel.setTopicChangedTime(changedTime);
+        channel.setTopic(topic);
     }
 }

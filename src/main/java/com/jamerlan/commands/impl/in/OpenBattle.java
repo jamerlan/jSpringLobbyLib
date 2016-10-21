@@ -2,7 +2,9 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
+import com.jamerlan.model.Battle;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,6 +31,10 @@ public class OpenBattle implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String battleID = parser.getString();
+        int battleID = parser.getInt();
+
+        SearchBattle searchBattle = new SearchBattle();
+        Battle battle = searchBattle.byBattleId(serverState, battleID);
+        serverState.setHostedBattle(battle);
     }
 }

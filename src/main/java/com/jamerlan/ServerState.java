@@ -1,29 +1,29 @@
 package com.jamerlan;
 
+import com.jamerlan.model.Account;
 import com.jamerlan.model.Battle;
 import com.jamerlan.model.Channel;
-import com.jamerlan.model.MyUser;
 import com.jamerlan.model.User;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class ServerState implements Serializable {
-    MyUser myUser = new MyUser("[ru]test","test", 8888, "*", "java test", 34523452);
+    Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
 
     private String currentMuteChannel;
 
-    private ArrayList<Channel> channels = new ArrayList<>();
+    private Set<Channel> channels = new HashSet<>();
 
     private ArrayList<String> unitsBlackList = new ArrayList<>();
 
-    private List<Battle> battles = new ArrayList<>();
+    private Set<Battle> battles = new HashSet<>();
 
-    public List<User> usersOnline = new ArrayList<>();
+    private Battle hostedBattle;
+
+    private Set<User> usersOnline = new HashSet<>();
 
     private Connection connection = new Connection();
 
@@ -36,11 +36,11 @@ public class ServerState implements Serializable {
         return connection;
     }
 
-    public List<User> getUsersOnline() {
+    public Set<User> getUsersOnline() {
         return usersOnline;
     }
 
-    public List<Battle> getBattles() {
+    public Set<Battle> getBattles() {
         return battles;
     }
 
@@ -48,19 +48,19 @@ public class ServerState implements Serializable {
         return unitsBlackList;
     }
 
-    public MyUser getMyUser() {
-        return myUser;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setMyUser(MyUser myUser) {
-        this.myUser = myUser;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public HashMap<String,String> getIgnoreList() {
-        return myUser.getIgnoreList();
+        return account.getIgnoreList();
     }
 
-    public List<Channel> getChannels() {
+    public Set<Channel> getChannels() {
         return channels;
     }
 
@@ -70,6 +70,14 @@ public class ServerState implements Serializable {
 
     public String getCurrentMuteChannel() {
         return currentMuteChannel;
+    }
+
+    public Battle getHostedBattle() {
+        return hostedBattle;
+    }
+
+    public void setHostedBattle(Battle hostedBattle) {
+        this.hostedBattle = hostedBattle;
     }
 
     public void searchBattles() {

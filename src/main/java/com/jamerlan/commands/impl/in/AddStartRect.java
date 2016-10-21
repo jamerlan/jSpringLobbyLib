@@ -28,6 +28,6 @@ public class AddStartRect implements Command {
         String left = parser.getString(" ");
         String top = parser.getString(" ");
         String right = parser.getString(" ");
-        String bottom = parser.getString(" ");
+        String bottom = parser.getString();
     }
 }

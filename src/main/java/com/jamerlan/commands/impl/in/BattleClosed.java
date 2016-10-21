@@ -4,10 +4,10 @@ import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 
 /**
  BATTLECLOSED battleID
@@ -28,12 +28,8 @@ public class BattleClosed implements Command {
 
         Integer battleID = parser.getInt();
 
-        Iterator<Battle> iterator = serverState.getBattles().iterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            if(battle.getBattleId()==battleID){
-                iterator.remove();
-            }
-        }
+        SearchBattle searchBattle = new SearchBattle();
+        Battle battle = searchBattle.byBattleId(serverState, battleID);
+        serverState.getBattles().remove(battle);
     }
 }

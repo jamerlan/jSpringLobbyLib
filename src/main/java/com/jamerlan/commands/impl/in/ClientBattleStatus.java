@@ -4,13 +4,13 @@ import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
  CLIENTBATTLESTATUS userName battleStatus teamColor
- TODO battleStatus - field only battle user or global?? etc teamColor
  */
 public class ClientBattleStatus implements Command {
     private String line;
@@ -30,11 +30,9 @@ public class ClientBattleStatus implements Command {
         String battleStatus = parser.getString(" ");
         String teamColor = parser.getString();
 
-        for (User user:serverState.usersOnline) {
-            if(user.getUserName().equals(userName)){
-                user.setBattlestatus(battleStatus);
-                user.setTeamColor(teamColor);
-            }
-        }
+        SearchUser searchUser = new SearchUser();
+        User user = searchUser.byUserName(serverState, userName);
+        user.setBattlestatus(battleStatus);
+        user.setTeamColor(teamColor);
     }
 }

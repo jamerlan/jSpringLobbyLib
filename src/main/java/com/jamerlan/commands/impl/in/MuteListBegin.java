@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  MUTELISTBEGIN chanName
- TODO: MuteList of channel
  */
 public class MuteListBegin implements Command {
     private String line;
@@ -25,7 +24,7 @@ public class MuteListBegin implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String chanName = parser.getString(" ");
+        String chanName = parser.getString();
         serverState.setCurrentMuteChannel(chanName);
     }
 }

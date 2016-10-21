@@ -2,12 +2,12 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.Battle;
+import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 
 /**
  REMOVEBOT battleID name
@@ -28,12 +28,8 @@ public class RemoveBot implements Command {
 
         int battleID = parser.getInt(" ");
         String name = parser.getString();
-        Iterator<Battle> iterator = serverState.getBattles().iterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            if(battle.getBattleId() == battleID){
-                battle.getUsers().remove(name);
-            }
-        }
+        SearchUser searchUser = new SearchUser();
+        User user = searchUser.byUserName(serverState, name);
+        serverState.getUsersOnline().remove(user);
     }
 }

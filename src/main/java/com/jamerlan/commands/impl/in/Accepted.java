@@ -7,7 +7,9 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/*ACCEPTED userName*/
+/*
+ACCEPTED userName
+* */
 
 public class Accepted implements Command {
     private String line;

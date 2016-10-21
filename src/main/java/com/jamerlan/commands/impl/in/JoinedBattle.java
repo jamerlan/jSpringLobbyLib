@@ -5,10 +5,11 @@ import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
 import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchBattle;
+import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ListIterator;
 
 /**
  JOINEDBATTLE battleID userName [scriptPassword]
@@ -30,17 +31,10 @@ public class JoinedBattle implements Command{
         int battleId = parser.getInt(" ");
         String userName = parser.getString();
 
-        ListIterator<Battle> iterator = serverState.getBattles().listIterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-
-            if(battle.getBattleId()==(battleId)){
-                for (User user: serverState.getUsersOnline()) {
-                    if(userName.equals(user.getUserName())){
-                        battle.getUsers().add(user);
-                    }
-                }
-            }
-        }
+        SearchBattle searchBattle = new SearchBattle();
+        Battle battle = searchBattle.byBattleId(serverState, battleId);
+        SearchUser searchUser = new SearchUser();
+        User user = searchUser.byUserName(serverState, userName);
+        battle.getUsers().add(user);
     }
 }

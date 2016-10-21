@@ -3,13 +3,13 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
  JOINED chanName userName
- TODO: need list of Users of Channel, and ?need List of Channels?
  */
 public class Joined implements Command {
     private String line;
@@ -28,10 +28,8 @@ public class Joined implements Command {
         String chanName = parser.getString(" ");
         String userName = parser.getString();
 
-        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
-            if(chanName.equals(channel.getChanName())) {
-                channel.getClients().add(userName);
-            }
-        }
+        SearchChannel searchChannel = new SearchChannel();
+        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
+        channel.getClients().add(userName);
     }
 }

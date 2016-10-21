@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  SHAREDKEY key_status key_digest [extra_data]
- TODO: delimiter of key_digest can be ""?
  */
 public class SharedKey implements Command {
     private String line;
