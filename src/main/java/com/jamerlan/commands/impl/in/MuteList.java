@@ -4,10 +4,10 @@ import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.Channel;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 /**
  * MUTELIST {mute description}
@@ -32,11 +32,8 @@ public class MuteList implements Command {
 
         String muteDescription = parser.getString();
 
-        ArrayList<Channel> channels = (ArrayList<Channel>) serverState.getChannels();
-        for (Channel channel:serverState.getChannels()) {
-            if(channel.getChanName().equals(serverState.getCurrentMuteChannel())){
-                channel.getMutelist().add(muteDescription);
-            }
-        }
+        SearchChannel searchChannel = new SearchChannel();
+        Channel channel = searchChannel.byChanName(serverState, serverState.getCurrentMuteChannel());
+        channel.getMutelist().add(muteDescription);
     }
 }
