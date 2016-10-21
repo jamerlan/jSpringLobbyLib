@@ -25,5 +25,7 @@ public class ForceQuitBattle implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
+        serverState.getAccount().setBattleID(-1);
+        System.out.println("YOU ARE KICKED FROM BATTLE!");
     }
 }

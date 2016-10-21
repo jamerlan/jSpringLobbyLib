@@ -28,7 +28,7 @@ public class Join implements Command {
 
         for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
             if(chanName.equals(channel.getChanName())) {
-                serverState.getMyUser().getChannelList().add(channel);
+                serverState.getAccount().getChannelList().add(channel);
             }
         }
 

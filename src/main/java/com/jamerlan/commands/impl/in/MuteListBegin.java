@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 
 /**
  MUTELISTBEGIN chanName
- TODO: MuteList of channel
  */
 public class MuteListBegin implements Command {
     private String line;

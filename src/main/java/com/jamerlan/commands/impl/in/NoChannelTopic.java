@@ -3,13 +3,13 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
  NOCHANNELTOPIC chanName
- TODO: Set Channel Topic to ""
  */
 public class NoChannelTopic implements Command {
     private String line;
@@ -26,6 +26,10 @@ public class NoChannelTopic implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString();
-
+        SearchChannel searchChannel = new SearchChannel();
+        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
+        channel.setTopicAuthor("");
+        channel.setTopicChangedTime("");
+        channel.setTopic("");
     }
 }

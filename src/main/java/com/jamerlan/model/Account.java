@@ -3,22 +3,19 @@ package com.jamerlan.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Elt on 20.10.2016.
- */
-public class MyUser {
-    private final String userName;
+public class Account {
+    private final String login;
     private final String password;
     private final int cpu;
     private final String localIp;
     private final String lobbyNameAndVersion;
     private final int userId;
-    private Battle battle;
+    private int battleID;
     private ArrayList<Channel> channelList;
     private HashMap<String, String> ignoreList;
 
-    public MyUser(String userName, String password, int cpu, String localIp, String lobbyNameAndVersion, int userId) {
-        this.userName = userName;
+    public Account(String login, String password, int cpu, String localIp, String lobbyNameAndVersion, int userId) {
+        this.login = login;
         this.password = password;
         this.cpu = cpu;
         this.localIp = localIp;
@@ -26,8 +23,8 @@ public class MyUser {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
 
     public String getPassword() {
@@ -66,11 +63,11 @@ public class MyUser {
         this.ignoreList = ignoreList;
     }
 
-    public Battle getBattle() {
-        return battle;
+    public int getBattleID() {
+        return battleID;
     }
 
-    public void setBattle(Battle battle) {
-        this.battle = battle;
+    public void setBattleID(int battleID) {
+        this.battleID = battleID;
     }
 }

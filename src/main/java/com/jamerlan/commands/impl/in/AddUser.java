@@ -4,6 +4,7 @@ import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,7 +30,10 @@ public class AddUser implements Command{
         String country = parser.getString(" ");
         String accountId = parser.getString();
 
-        User user = new User(userName, country,"-", accountId);
+        SearchUser searchUser = new SearchUser();
+        User user = searchUser.byUserName(serverState, userName);
+        user.setCountry(country);
+        user.setAccountId(accountId);
         serverState.getUsersOnline().add(user);
     }
 }

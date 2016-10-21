@@ -1,19 +1,17 @@
 package com.jamerlan;
 
+import com.jamerlan.model.Account;
 import com.jamerlan.model.Battle;
 import com.jamerlan.model.Channel;
-import com.jamerlan.model.MyUser;
 import com.jamerlan.model.User;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class ServerState implements Serializable {
-    MyUser myUser = new MyUser("[ru]test","test", 8888, "*", "java test", 34523452);
+    Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
 
     private String currentMuteChannel;
 
@@ -23,7 +21,7 @@ public class ServerState implements Serializable {
 
     private List<Battle> battles = new ArrayList<>();
 
-    public List<User> usersOnline = new ArrayList<>();
+    public Set<User> usersOnline = new HashSet<>();
 
     private Connection connection = new Connection();
 
@@ -36,7 +34,7 @@ public class ServerState implements Serializable {
         return connection;
     }
 
-    public List<User> getUsersOnline() {
+    public Set<User> getUsersOnline() {
         return usersOnline;
     }
 
@@ -48,16 +46,16 @@ public class ServerState implements Serializable {
         return unitsBlackList;
     }
 
-    public MyUser getMyUser() {
-        return myUser;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setMyUser(MyUser myUser) {
-        this.myUser = myUser;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public HashMap<String,String> getIgnoreList() {
-        return myUser.getIgnoreList();
+        return account.getIgnoreList();
     }
 
     public List<Channel> getChannels() {

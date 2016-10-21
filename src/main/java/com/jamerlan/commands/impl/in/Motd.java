@@ -26,6 +26,6 @@ public class Motd implements Command {
 
         String message = parser.getString();
 
-        System.out.println(commandName + " " + message);
+//        System.out.println(commandName + " " + message);
     }
 }

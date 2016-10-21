@@ -9,7 +9,11 @@ import java.util.ArrayList;
 public class Channel {
     private String chanName;
     private int userCount;
+
+    private String topicAuthor;
+    private String topicChangedTime;
     private String topic;
+
     private ArrayList<String> mutelist;
     private ArrayList<String> clients;
 
@@ -19,15 +23,37 @@ public class Channel {
         this.topic = topic;
     }
 
+    public Channel(String chanName) {
+        this.chanName = chanName;
+    }
+
     @Override
     public String toString() {
         return "Channel{" +
                 "chanName='" + chanName + '\'' +
                 ", userCount=" + userCount +
+                ", topicAuthor='" + topicAuthor + '\'' +
+                ", topicChangedTime='" + topicChangedTime + '\'' +
                 ", topic='" + topic + '\'' +
                 ", mutelist=" + mutelist +
                 ", clients=" + clients +
                 '}';
+    }
+
+    public String getTopicAuthor() {
+        return topicAuthor;
+    }
+
+    public void setTopicAuthor(String topicAuthor) {
+        this.topicAuthor = topicAuthor;
+    }
+
+    public String getTopicChangedTime() {
+        return topicChangedTime;
+    }
+
+    public void setTopicChangedTime(String topicChangedTime) {
+        this.topicChangedTime = topicChangedTime;
     }
 
     public String getChanName() {

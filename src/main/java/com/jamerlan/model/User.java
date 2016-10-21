@@ -19,6 +19,11 @@ public class User implements Serializable {
     private String teamColor;
     private String ip;
     private int port;
+    private Channel channel; //need for SAYPRIVATE Command
+
+    public User(String userName) {
+        this.userName = userName;
+    }
 
     public User(String userName, String country, String cpu, String accountId) {
         this.userName = userName;
@@ -31,6 +36,11 @@ public class User implements Serializable {
         this.userName = userName;
         this.battlestatus = battlestatus;
         this.teamColor = teamColor;
+    }
+
+    public User(String userName, String status) {
+        this.userName = userName;
+        this.status = status;
     }
 
     public String getUserName() {
@@ -87,6 +97,18 @@ public class User implements Serializable {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCpu(String cpu) {
+        this.cpu = cpu;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     @Override

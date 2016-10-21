@@ -5,6 +5,7 @@ import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
 
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,13 +34,11 @@ public class UpdateBattleInfo implements Command{
         int mapHash = parser.getInt(" ");
         String mapName = parser.getString();
 
-        for (Battle battle:serverState.getBattles()){
-            if(battle.getBattleId()==(battleId)){
-                battle.setMapHash(mapHash);
-                battle.setMapName(mapName);
-                battle.setLocked(locked);
-                battle.setSpectatorCount(spectatorCount);
-            }
-        }
+        SearchBattle searchBattle = new SearchBattle();
+        Battle battle = searchBattle.byBattleId(serverState, battleId);
+        battle.setMapHash(mapHash);
+        battle.setMapName(mapName);
+        battle.setLocked(locked);
+        battle.setSpectatorCount(spectatorCount);
     }
 }

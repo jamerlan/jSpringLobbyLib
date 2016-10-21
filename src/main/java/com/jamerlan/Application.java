@@ -24,11 +24,13 @@ public class Application {
         Connection connection = serverState.getConnection();
         System.out.println(connection);
 
-        Login loginCommand = new Login(serverState.getMyUser().getUserName(), serverState.getMyUser().getPassword(), serverState.getMyUser().getCpu(), serverState.getMyUser().getLocalIp(), serverState.getMyUser().getLobbyNameAndVersion(), serverState.getMyUser().getUserId());
+        Login loginCommand = new Login(serverState.getAccount().getLogin(), serverState.getAccount().getPassword(),
+                                        serverState.getAccount().getCpu(), serverState.getAccount().getLocalIp(),
+                                        serverState.getAccount().getLobbyNameAndVersion(), serverState.getAccount().getUserId());
         loginCommand.execute(connection.getWriter());
 
         Thread.sleep(10000);
-        serverState.searchBattles();
+//        serverState.searchBattles();
         while (true) {
             Thread.sleep(100);
         }

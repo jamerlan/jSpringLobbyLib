@@ -1,10 +1,10 @@
 package com.jamerlan.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Battle {
-    private List<User> users;
+    private Set<User> users;
     private int battleId;
     private int type;
     private int natType;
@@ -22,8 +22,9 @@ public class Battle {
     private String mapName;
     private String gameName;
     private String title;
+    private Channel channel; //need for SAIDBATTLE Command
 
-    public Battle(ArrayList<User> users, int battleId, int type, int natType, String fouder, String ip, int port,
+    public Battle(HashSet<User> users, int battleId, int type, int natType, String fouder, String ip, int port,
                   int maxPlayers, int passworded, int rank, int mapHash) {
         this.battleId = battleId;
         this.type = type;
@@ -43,12 +44,16 @@ public class Battle {
         this.users = users;
     }
 
-    public Battle(List<User> users, int battleId) {
+    public Battle(HashSet<User> users, int battleId) {
         this.users = users;
         this.battleId = battleId;
     }
 
-    public Battle(List<User> users, int battleId, int type, int natType, String fouder, String ip, int port, int maxPlayers, int passworded, int rank, int mapHash, String mapName, String title, String gameName) {
+    public Battle(int battleId) {
+        this.battleId = battleId;
+    }
+
+    public Battle(HashSet<User> users, int battleId, int type, int natType, String fouder, String ip, int port, int maxPlayers, int passworded, int rank, int mapHash, String mapName, String title, String gameName) {
         this.users = users;
         this.battleId = battleId;
         this.type = type;
@@ -117,11 +122,11 @@ public class Battle {
         return mapName;
     }
 
-    public List getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

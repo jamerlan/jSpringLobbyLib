@@ -30,5 +30,6 @@ public class OpenBattle implements Command {
         String commandName = parser.getString(" ");
 
         String battleID = parser.getString();
+        System.out.println(commandName + " " + battleID);
     }
 }

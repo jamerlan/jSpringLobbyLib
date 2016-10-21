@@ -3,11 +3,13 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
+import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * BATTLEOPENED battleID type natType founder ip port maxPlayers passworded rank mapHash {engineName} {engineVersion} {map} {title} {gameName}
@@ -38,10 +40,26 @@ public class BattleOpened implements Command {
         int passworded = parser.getInt(" ");
         int rank = parser.getInt(" ");
         int mapHash = parser.getInt(" ");
-        String map = parser.getString("\t");
+        String mapName = parser.getString("\t");
         String title = parser.getString("\t");
         String gameName = parser.getString();
 
-        serverState.getBattles().add(new Battle(new ArrayList<>(), battleId, type, natType, founder, ip, port, maxPlayers, passworded, rank, mapHash, map, title, gameName));
+        SearchBattle searchBattle = new SearchBattle();
+        Battle battle = searchBattle.byBattleId(serverState, battleId);
+        System.out.println(battleId + " " + type);
+        battle.setType(type);
+        battle.setNatType(natType);
+        battle.setFouder(founder);
+        battle.setIp(ip);
+        battle.setPort(port);
+        battle.setMaxPlayers(maxPlayers);
+        battle.setPassworded(passworded);
+        battle.setRank(rank);
+        battle.setMapHash(mapHash);
+        battle.setMapName(mapName);
+        battle.setTitle(title);
+        battle.setGameName(gameName);
+
+        battle.setUsers(new HashSet<User>());
     }
 }

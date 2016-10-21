@@ -22,8 +22,6 @@ public class Pong implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
-        String commandName = parser.getString(" ");
-
-        System.out.println(commandName);
+        String commandName = parser.getString();
     }
 }

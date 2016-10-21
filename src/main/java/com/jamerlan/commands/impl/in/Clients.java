@@ -3,6 +3,7 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,15 +29,12 @@ public class Clients implements Command {
 
         String chanName = parser.getString(" ");
         ArrayList<String> clientsList = new ArrayList<>();
-        
 
-        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
-            if(chanName.equals(channel.getChanName())) {
-                while(parser.hasNext(" ")){
-                    String client = parser.getString(" ");
-                    channel.getClients().add(client);
-                }
-            }
+        SearchChannel searchChannel = new SearchChannel();
+        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
+        while(parser.hasNext(" ")){
+            String client = parser.getString(" ");
+            channel.getClients().add(client);
         }
     }
 }

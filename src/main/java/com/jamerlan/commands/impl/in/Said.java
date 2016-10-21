@@ -27,5 +27,7 @@ public class Said implements Command {
         String chanName = parser.getString(" ");
         String userName = parser.getString(" ");
         String message = parser.getString();
+
+
     }
 }
