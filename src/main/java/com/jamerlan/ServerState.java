@@ -15,11 +15,11 @@ public class ServerState implements Serializable {
 
     private String currentMuteChannel;
 
-    private ArrayList<Channel> channels = new ArrayList<>();
+    private Set<Channel> channels = new HashSet<>();
 
     private ArrayList<String> unitsBlackList = new ArrayList<>();
 
-    private List<Battle> battles = new ArrayList<>();
+    private Set<Battle> battles = new HashSet<>();
 
     private Battle hostedBattle;
 
@@ -40,7 +40,7 @@ public class ServerState implements Serializable {
         return usersOnline;
     }
 
-    public List<Battle> getBattles() {
+    public Set<Battle> getBattles() {
         return battles;
     }
 
@@ -60,7 +60,7 @@ public class ServerState implements Serializable {
         return account.getIgnoreList();
     }
 
-    public List<Channel> getChannels() {
+    public Set<Channel> getChannels() {
         return channels;
     }
 
