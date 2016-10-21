@@ -2,7 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.User;
+import com.jamerlan.model.Bot;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class AddBot implements Command {
         String battleStatus = parser.getString(" ");
         String teamColor = parser.getString();
 
-        User user = new User(name, owner, battleStatus, teamColor);
-        serverState.getUsersOnline().add(user);
+        Bot bot = new Bot(name, owner, " ");
+        serverState.getUsersOnline().add(bot);
     }
 }

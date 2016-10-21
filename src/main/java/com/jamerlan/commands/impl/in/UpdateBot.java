@@ -2,7 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.User;
+import com.jamerlan.model.Bot;
 import com.jamerlan.utils.CommandParser;
 
 import java.io.IOException;
@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 
 /**
  UPDATEBOT battleID name battleStatus teamColor
- TODO: need list of bots?
  */
 public class UpdateBot implements Command {
     private String line;
@@ -31,7 +30,8 @@ public class UpdateBot implements Command {
         String battleStatus = parser.getString(" ");
         String teamColor = parser.getString();
 
-        User user = new User(name, battleStatus, teamColor);
-        serverState.getUsersOnline().add(user);
+        Bot bot = new Bot(name, battleStatus, "");
+        bot.setTeamColor(teamColor);
+        serverState.getUsersOnline().add(bot);
     }
 }
