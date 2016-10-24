@@ -26,9 +26,9 @@ public class SetScriptTags implements Command {
         String commandName = parser.getString(" ");
 
         ArrayList<String> keys = new ArrayList<>();
-        keys.add(parser.getString("/t"));
-        while (parser.hasNext(" ")) {
-            keys.add(parser.getString("/t"));
+        keys.add(parser.getString("\t"));
+        while (parser.hasNext("\t")) {
+            keys.add(parser.getString("\t"));
         }
     }
 }

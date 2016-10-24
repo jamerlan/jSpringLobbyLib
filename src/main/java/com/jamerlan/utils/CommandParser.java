@@ -16,9 +16,13 @@ public class CommandParser {
 
     public String getString(String delimiter) {
         int index = line.indexOf(delimiter);
-        String chunk = line.substring(0, index);
-        line = line.substring(index + 1);
-        return chunk;
+        if(index != -1) {
+            String chunk = line.substring(0, index);
+            line = line.substring(index + 1);
+            return chunk;
+        } else {
+            return line;
+        }
     }
 
     public String getString() {
