@@ -5,14 +5,16 @@ import com.jamerlan.commands.Command;
 import java.io.PrintWriter;
 
 public class MyBattleStatus implements Command{
-     private String arg;
+     private String battleStatus;
+     private int teamColor;
 
-     public MyBattleStatus(String arg){
-         this.arg = arg;
-     }
+    public MyBattleStatus(String battleStatus, int teamColor) {
+        this.battleStatus = battleStatus;
+        this.teamColor = teamColor;
+    }
 
-     @Override
+    @Override
      public void execute(PrintWriter writer){
-         writer.println("MYBATTLESTATUS " + arg);
+         writer.println("MYBATTLESTATUS " + battleStatus + " " + teamColor);
      }
 }

@@ -28,6 +28,21 @@ public class Channel {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Channel channel = (Channel) o;
+
+        return chanName.equals(channel.chanName);
+    }
+
+    @Override
+    public int hashCode() {
+        return chanName.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Channel{" +
                 "chanName='" + chanName + '\'' +

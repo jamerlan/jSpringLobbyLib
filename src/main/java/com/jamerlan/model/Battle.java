@@ -24,6 +24,24 @@ public class Battle {
     private String title;
     private Channel channel; //need for SAIDBATTLE Command
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Battle battle = (Battle) o;
+
+        if (battleId != battle.battleId) return false;
+        return fouder.equals(battle.fouder);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = battleId;
+        result = 31 * result;
+        return result;
+    }
+
     public Battle(HashSet<User> users, int battleId, int type, int natType, String fouder, String ip, int port,
                   int maxPlayers, int passworded, int rank, int mapHash) {
         this.battleId = battleId;

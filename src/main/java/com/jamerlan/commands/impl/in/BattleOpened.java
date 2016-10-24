@@ -46,7 +46,6 @@ public class BattleOpened implements Command {
 
         SearchBattle searchBattle = new SearchBattle();
         Battle battle = searchBattle.byBattleId(serverState, battleId);
-        System.out.println(battleId + " " + type);
         battle.setType(type);
         battle.setNatType(natType);
         battle.setFouder(founder);
