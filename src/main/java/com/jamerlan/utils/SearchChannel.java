@@ -19,7 +19,7 @@ public class SearchChannel {
         Iterator<Channel> iterator = serverState.getChannels().iterator();
         while (iterator.hasNext()){
             Channel channel = iterator.next();
-            if(channel.getChanName()==chanName){
+            if(channel.getChanName().equals(chanName)){
                 searchedChannel = channel;
             }
         }

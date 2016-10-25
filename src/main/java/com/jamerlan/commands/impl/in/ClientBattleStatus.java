@@ -29,10 +29,9 @@ public class ClientBattleStatus implements Command {
         String userName = parser.getString(" ");
         String battleStatus = parser.getString(" ");
         String teamColor = parser.getString();
-
         SearchUser searchUser = new SearchUser();
         User user = searchUser.byUserName(serverState, userName);
-        user.setBattlestatus(battleStatus);
+        user.setBattleStatus(battleStatus);
         user.setTeamColor(teamColor);
     }
 }

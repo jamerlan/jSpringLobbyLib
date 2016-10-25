@@ -1,5 +1,6 @@
 package com.jamerlan;
 
+import com.jamerlan.commands.impl.out.Channels;
 import com.jamerlan.commands.impl.out.Login;
 
 import java.io.IOException;
@@ -29,8 +30,6 @@ public class Application {
                                         serverState.getAccount().getLobbyNameAndVersion(), serverState.getAccount().getUserId());
         loginCommand.execute(connection.getWriter());
 
-        Thread.sleep(10000);
-//        serverState.searchBattles();
         while (true) {
             Thread.sleep(100);
         }

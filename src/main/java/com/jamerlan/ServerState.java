@@ -17,7 +17,7 @@ public class ServerState implements Serializable {
 
     private Set<Channel> channels = new HashSet<>();
 
-    private ArrayList<String> unitsBlackList = new ArrayList<>();
+    private List<String> unitsBlackList = new ArrayList<>();
 
     private Set<Battle> battles = new HashSet<>();
 
@@ -44,6 +44,10 @@ public class ServerState implements Serializable {
         return battles;
     }
 
+    public Set<Channel> getChannels() {
+        return channels;
+    }
+
     public List<String> getUnitsBlackList() {
         return unitsBlackList;
     }
@@ -58,10 +62,6 @@ public class ServerState implements Serializable {
 
     public HashMap<String,String> getIgnoreList() {
         return account.getIgnoreList();
-    }
-
-    public Set<Channel> getChannels() {
-        return channels;
     }
 
     public void setCurrentMuteChannel(String currentMuteChannel) {
@@ -83,7 +83,20 @@ public class ServerState implements Serializable {
     public void searchBattles() {
         System.out.println("------------------+");
         for (Battle battle : battles){
-            System.out.println("             serverState.getBattles = " + battle);
+            System.out.println(battle.getUsers() + "             " + battle);
+        }
+        System.out.println("------------------");
+    }public void searchUsers() {
+        System.out.println("------------------+");
+        for (User user : usersOnline){
+            System.out.println("             " + user);
+        }
+        System.out.println("------------------");
+    }public void searchChannels() {
+        System.out.println("------------------+");
+        System.out.println(channels);
+        for (Channel channel : channels){
+            System.out.println("             Channels = " + channel);
         }
         System.out.println("------------------");
     }

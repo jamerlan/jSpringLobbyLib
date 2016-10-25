@@ -27,7 +27,7 @@ public class Bot extends User implements Serializable {
         return "Bot{" +
                 ", name='" + super.getUserName() + '\'' +
                 ", owner='" + owner + '\'' +
-                ", BattleStatus='" + super.getBattlestatus() + '\'' +
+                ", BattleStatus='" + super.getBattleStatus() + '\'' +
                 ", teamColor='" + super.getTeamColor() + '\'' +
                 ", aiDll='" + aiDll + '\'' +
                 '}';
