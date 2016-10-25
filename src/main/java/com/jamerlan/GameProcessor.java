@@ -53,6 +53,7 @@ public class GameProcessor {
                             new ChannelMessage(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("CHANNELTOPIC ")){
+                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                             new ChannelTopic(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("CLIENTBATTLESTATUS ")) {

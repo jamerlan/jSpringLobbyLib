@@ -94,7 +94,6 @@ public class ServerState implements Serializable {
         System.out.println("------------------");
     }public void searchChannels() {
         System.out.println("------------------+");
-        System.out.println(channels);
         for (Channel channel : channels){
             System.out.println("             Channels = " + channel);
         }
