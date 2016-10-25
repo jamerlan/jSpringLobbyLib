@@ -80,19 +80,19 @@ public class ServerState implements Serializable {
         this.hostedBattle = hostedBattle;
     }
 
-    public void searchBattles() {
+    public void printBattles() {
         System.out.println("------------------+");
         for (Battle battle : battles){
             System.out.println(battle.getUsers() + "             " + battle);
         }
         System.out.println("------------------");
-    }public void searchUsers() {
+    }public void printUsers() {
         System.out.println("------------------+");
         for (User user : usersOnline){
             System.out.println("             " + user);
         }
         System.out.println("------------------");
-    }public void searchChannels() {
+    }public void printChannels() {
         System.out.println("------------------+");
         for (Channel channel : channels){
             System.out.println("             Channels = " + channel);
