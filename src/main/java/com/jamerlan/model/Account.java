@@ -1,7 +1,6 @@
 package com.jamerlan.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Account {
     private final String login;
@@ -12,7 +11,6 @@ public class Account {
     private final int userId;
     private int battleID;
     private ArrayList<Channel> channelList;
-    private HashMap<String, String> ignoreList;
 
     public Account(String login, String password, int cpu, String localIp, String lobbyNameAndVersion, int userId) {
         this.login = login;
@@ -53,14 +51,6 @@ public class Account {
 
     public void setChannelList(ArrayList<Channel> channelList) {
         this.channelList = channelList;
-    }
-
-    public HashMap<String, String> getIgnoreList() {
-        return ignoreList;
-    }
-
-    public void setIgnoreList(HashMap<String, String> ignoreList) {
-        this.ignoreList = ignoreList;
     }
 
     public int getBattleID() {

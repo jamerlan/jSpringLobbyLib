@@ -1,6 +1,5 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.out.Channels;
 import com.jamerlan.commands.impl.out.Login;
 
 import java.io.IOException;

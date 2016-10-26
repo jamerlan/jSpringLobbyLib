@@ -9,14 +9,21 @@ import java.io.PrintWriter;
  MYSTATUS status
  */
 public class MyStatus implements Command {
-    private Long status;
+    private int inGame;
+    private int away;
 
-    public MyStatus(Long status) {
-        this.status = status;
+    public void setInGame(int inGame) {
+        this.inGame = inGame;
+    }
+
+    public void setAway(int away) {
+        this.away = away;
     }
 
     @Override
     public void execute(PrintWriter writer) throws IOException {
+        String temp = inGame + away + "00000";
+        Long status = Long.parseLong(temp, 2);
         writer.println("MYSTATUS " + status);
     }
 }

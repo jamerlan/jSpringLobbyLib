@@ -53,7 +53,6 @@ public class GameProcessor {
                             new ChannelMessage(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("CHANNELTOPIC ")){
-                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                             new ChannelTopic(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("CLIENTBATTLESTATUS ")) {
@@ -113,7 +112,7 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("IGNORELIST ")) {
                             new IgnoreList(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("IGNORELISTBEGIN ")) {
+                        if(lineFromServer.startsWith("IGNORELISTBEGIN")) {
                             new IgnoreListBegin(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("IGNORELISTEND")) {
@@ -170,7 +169,7 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("OPENBATTLEFAILED ")) {
                             new OpenBattleFailed(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("PONG ")) {
+                        if(lineFromServer.startsWith("PONG")) {
                             new Pong(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("PUBLICKEY ")) {

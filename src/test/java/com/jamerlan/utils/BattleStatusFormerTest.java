@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by Elt on 25.10.2016.
  */
-public class StatusToBinarTest {
+public class BattleStatusFormerTest {
     public static String dec(int a) { return Integer.toString(a, 10); }
 
     public static void main(String[] args) {
@@ -23,15 +23,11 @@ public class StatusToBinarTest {
 
     @Test
     public void test() throws Exception {
-        int ready = 1;
-        int  teamNo = 1111;
-        int ally = 1111;
-        int mode = 1;
-        int handicap = 1111111;
-        int sync = 11;
-        int side = 1111;
-        String temp = "0" + ready + teamNo + ally + mode + handicap + "0000" + sync + side + "0000";
+        int inGame = 1;
+        int away = 1;
+
+        String temp = inGame + away + "00000";
         Long l = Long.parseLong(temp, 2);
-        System.out.println( l);
+        System.out.println(l);
     }
 }

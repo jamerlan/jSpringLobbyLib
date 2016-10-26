@@ -36,12 +36,11 @@ public class EltTestTest {
                 serverState.getAccount().getLobbyNameAndVersion(), serverState.getAccount().getUserId());
         loginCommand.execute(connection.getWriter());
 
-        JoinBattle joinBattle = new JoinBattle(25082);
+        JoinBattle joinBattle = new JoinBattle(25258);
         joinBattle.execute(connection.getWriter());
 
         Thread.sleep(6000);
-
-        MyBattleStatus myBattleStatus = new MyBattleStatus("1091902654", 10000);
+        MyBattleStatus myBattleStatus = new MyBattleStatus( 10000);
         myBattleStatus.execute(connection.getWriter());
 
         Thread.sleep(6000);
@@ -49,5 +48,6 @@ public class EltTestTest {
         SearchUser searchUser = new SearchUser();
         User user = searchUser.byUserName(serverState, "[ru]test");
         System.out.println("User: " + user);
+        serverState.printBattles();
     }
 }

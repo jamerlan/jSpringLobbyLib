@@ -13,6 +13,8 @@ import java.util.*;
 public class ServerState implements Serializable {
     Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
 
+    private Map<String, String> ignoreList = new HashMap<>();
+
     private String currentMuteChannel;
 
     private Set<Channel> channels = new HashSet<>();
@@ -48,6 +50,7 @@ public class ServerState implements Serializable {
         return channels;
     }
 
+
     public List<String> getUnitsBlackList() {
         return unitsBlackList;
     }
@@ -60,8 +63,8 @@ public class ServerState implements Serializable {
         this.account = account;
     }
 
-    public HashMap<String,String> getIgnoreList() {
-        return account.getIgnoreList();
+    public Map<String, String> getIgnoreList() {
+        return ignoreList;
     }
 
     public void setCurrentMuteChannel(String currentMuteChannel) {

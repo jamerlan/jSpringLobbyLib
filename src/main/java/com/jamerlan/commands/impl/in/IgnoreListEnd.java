@@ -24,6 +24,6 @@ public class IgnoreListEnd implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        serverState.getIgnoreList().clear();
+//        serverState.getIgnoreList().clear();
     }
 }

@@ -24,8 +24,15 @@ public class Ignore implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString(" ");
-        String reason = parser.getString();
-        serverState.getIgnoreList().put(userName,reason);
+        String userNameWord = parser.getString("=");
+        String userName = parser.getString("\t");
+
+        if (parser.hasNext("=")){
+            String reasonWord = parser.getString("=");
+            String reason = parser.getString();
+            serverState.getIgnoreList().put(userName,reason);
+        }else {
+            serverState.getIgnoreList().put(userName, " ");
+        }
     }
 }
