@@ -54,7 +54,8 @@ public class EltTest {
 //            out.println("CHANNELS");
 
             Thread.sleep(3000);
-            out.println("UNIGNORE " + "userName=[ru]test");
+            com.jamerlan.commands.impl.out.ForceJoinBattle forceJoinBattle = new com.jamerlan.commands.impl.out.ForceJoinBattle("[ru]test1", 25258);
+            forceJoinBattle.execute(out);
                    // "00000001010000000000010011001110");
 
 //            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");

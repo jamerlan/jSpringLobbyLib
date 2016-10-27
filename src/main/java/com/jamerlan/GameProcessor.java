@@ -253,10 +253,10 @@ public class GameProcessor {
                         if(lineFromServer.startsWith("TASServer ")) {
                             new TASServer(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("TESTLOGINACCEPT ")) {
+                        if(lineFromServer.startsWith("TESTLOGINACCEPT")) {
                             new TestLoginAccept(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
-                        if(lineFromServer.startsWith("TESTLOGINDENY ")) {
+                        if(lineFromServer.startsWith("TESTLOGINDENY")) {
                             new TestLoginDeny(lineFromServer, serverState).execute(serverState.getConnection().getWriter());
                         }else
                         if(lineFromServer.startsWith("UDPSOURCEPORT ")) {
