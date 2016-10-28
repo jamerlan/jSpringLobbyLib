@@ -1,8 +1,6 @@
 package com.jamerlan;
 
-import com.jamerlan.commands.impl.out.Login;
-import com.jamerlan.commands.impl.out.OpenBattle;
-import com.jamerlan.commands.impl.out.Ping;
+import com.jamerlan.commands.impl.out.*;
 import org.junit.Test;
 
 /**
@@ -21,10 +19,9 @@ public class ApplicationTest {
                 serverState.getAccount().getCpu(), serverState.getAccount().getLocalIp(),
                 serverState.getAccount().getLobbyNameAndVersion(), serverState.getAccount().getUserId());
         loginCommand.execute(connection.getWriter());
-        OpenBattle openBattle = new OpenBattle(0,0,"",8080, 32, 0, 0, 0, "Red Comet");
-        openBattle.execute(connection.getWriter());
-        Thread.sleep(4000);
-        serverState.searchBattles();
+
+        Thread.sleep(10000);
+
         while (true) {
             Ping ping = new Ping();
             ping.execute(connection.getWriter());

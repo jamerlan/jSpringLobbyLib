@@ -24,7 +24,7 @@ public class ForceJoinBattleFailed implements Command {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
-        String userName = parser.getString("/t");
+        String userName = parser.getString(" ");
         String reason = parser.getString();
     }
 }

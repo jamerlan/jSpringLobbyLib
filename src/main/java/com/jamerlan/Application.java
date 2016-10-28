@@ -29,8 +29,6 @@ public class Application {
                                         serverState.getAccount().getLobbyNameAndVersion(), serverState.getAccount().getUserId());
         loginCommand.execute(connection.getWriter());
 
-        Thread.sleep(10000);
-//        serverState.searchBattles();
         while (true) {
             Thread.sleep(100);
         }

@@ -12,29 +12,37 @@ import java.io.Serializable;
 public class User implements Serializable {
     private final String userName;
     private String country;
-    private String cpu;
+    private final int cpu = 0;
     private String accountId;
     private String status;
-    private String battlestatus;
+    private String battleStatus;
     private String teamColor;
     private String ip;
     private int port;
     private Channel channel; //need for SAYPRIVATE Command
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return userName.equals(user.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return userName.hashCode();
+    }
+
     public User(String userName) {
         this.userName = userName;
     }
 
-    public User(String userName, String country, String cpu, String accountId) {
+    public User(String userName, String battleStatus, String teamColor) {
         this.userName = userName;
-        this.country = country;
-        this.cpu = cpu;
-        this.accountId = accountId;
-    }
-
-    public User(String userName, String battlestatus, String teamColor) {
-        this.userName = userName;
-        this.battlestatus = battlestatus;
+        this.battleStatus = battleStatus;
         this.teamColor = teamColor;
     }
 
@@ -51,10 +59,6 @@ public class User implements Serializable {
         return country;
     }
 
-    public String getCpu() {
-        return cpu;
-    }
-
     public String getAccountId() {
         return accountId;
     }
@@ -67,12 +71,12 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public String getBattlestatus() {
-        return battlestatus;
+    public String getBattleStatus() {
+        return battleStatus;
     }
 
-    public void setBattlestatus(String battlestatus) {
-        this.battlestatus = battlestatus;
+    public void setBattleStatus(String battlestatus) {
+        this.battleStatus = battlestatus;
     }
 
     public String getTeamColor() {
@@ -103,10 +107,6 @@ public class User implements Serializable {
         this.country = country;
     }
 
-    public void setCpu(String cpu) {
-        this.cpu = cpu;
-    }
-
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
@@ -119,7 +119,7 @@ public class User implements Serializable {
                 ", cpu='" + cpu + '\'' +
                 ", accountId='" + accountId + '\'' +
                 ", status='" + status + '\'' +
-                ", battlestatus='" + battlestatus + '\'' +
+                ", battlestatus='" + battleStatus + '\'' +
                 ", teamColor='" + teamColor + '\'' +
                 ", ip='" + ip + '\'' +
                 ", port=" + port +

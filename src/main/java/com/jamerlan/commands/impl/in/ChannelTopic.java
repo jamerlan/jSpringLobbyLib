@@ -23,6 +23,7 @@ public class ChannelTopic implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         CommandParser parser = new CommandParser(line);
+        System.out.println("                                        Topic Command Established!");
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString(" ");
@@ -30,6 +31,7 @@ public class ChannelTopic implements Command {
         String changedTime = parser.getString(" ");
         String topic = parser.getString();
 
+        System.out.println("            Topic: " + topic);
         SearchChannel searchChannel = new SearchChannel();
         com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
         channel.setTopicAuthor(author);

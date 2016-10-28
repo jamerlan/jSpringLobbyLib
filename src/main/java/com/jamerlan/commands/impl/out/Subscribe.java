@@ -17,6 +17,7 @@ public class Subscribe implements Command {
 
     @Override
     public void execute(PrintWriter writer) throws IOException {
-        writer.println("SUBSCRIBE " + chanName);
+        writer.println("SUBSCRIBE chanName=" + chanName);
+
     }
 }

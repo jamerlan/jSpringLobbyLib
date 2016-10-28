@@ -19,7 +19,7 @@ public class SearchUser {
         Iterator<User> iterator = serverState.getUsersOnline().iterator();
         while (iterator.hasNext()){
             User user = iterator.next();
-            if(user.getUserName()==userName){
+            if(user.getUserName().equals(userName)){
                 searchedUser = user;
             }
         }

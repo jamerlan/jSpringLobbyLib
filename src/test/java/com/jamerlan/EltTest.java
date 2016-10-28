@@ -1,8 +1,6 @@
 package com.jamerlan;
 
 
-import com.jamerlan.commands.impl.out.Join;
-import com.jamerlan.commands.impl.out.Say;
 import com.jamerlan.utils.Base64Encoder;
 import com.jamerlan.utils.MD5Encoder;
 
@@ -53,15 +51,11 @@ public class EltTest {
 
             long b = 16777215;
             out.println("LOGIN " + login + " " + encodedPassword + " " + cpu + " " + localIp + " " + lobbyNameAndVersion + " " + userId);
-            out.println("CHANNELS");
-            Join join = new Join("fa");
-            join.execute(out);
-            Say say = new Say("fa", "Hello");
-            say.execute(out);
-//            JoinBattle joinBattle = new JoinBattle(23853);
-//            joinBattle.execute(out);
+//            out.println("CHANNELS");
+
             Thread.sleep(3000);
-//            out.println("MYBATTLESTATUS " + b);
+            com.jamerlan.commands.impl.out.ForceJoinBattle forceJoinBattle = new com.jamerlan.commands.impl.out.ForceJoinBattle("[ru]test1", 25258);
+            forceJoinBattle.execute(out);
                    // "00000001010000000000010011001110");
 
 //            MyBattleStatus myBattleStatus = new MyBattleStatus("00110111001101001000101010011001");
@@ -86,5 +80,7 @@ public class EltTest {
 
             //out.println("EXIT");
    }
+
+
 
 }

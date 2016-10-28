@@ -27,7 +27,7 @@ public class OpenBattleFailed implements Command{
         if (parser.hasNext(" ")){
             String reason = parser.getString();
         }else {
-            String reason = "";
+            String reason = " ";
         }
     }
 }

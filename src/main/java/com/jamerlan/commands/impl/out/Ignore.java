@@ -24,7 +24,7 @@ public class Ignore implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         if(reason!=null) {
-            writer.println("IGNORE " + userName + " " + reason);
+            writer.println("IGNORE userName=" + userName + "\treason=" + reason);
         }else{
             writer.println("IGNORE " + userName);
         }

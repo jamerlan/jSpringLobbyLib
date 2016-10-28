@@ -13,11 +13,13 @@ import java.util.*;
 public class ServerState implements Serializable {
     Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
 
+    private Map<String, String> ignoreList = new HashMap<>();
+
     private String currentMuteChannel;
 
     private Set<Channel> channels = new HashSet<>();
 
-    private ArrayList<String> unitsBlackList = new ArrayList<>();
+    private List<String> unitsBlackList = new ArrayList<>();
 
     private Set<Battle> battles = new HashSet<>();
 
@@ -44,6 +46,11 @@ public class ServerState implements Serializable {
         return battles;
     }
 
+    public Set<Channel> getChannels() {
+        return channels;
+    }
+
+
     public List<String> getUnitsBlackList() {
         return unitsBlackList;
     }
@@ -56,12 +63,8 @@ public class ServerState implements Serializable {
         this.account = account;
     }
 
-    public HashMap<String,String> getIgnoreList() {
-        return account.getIgnoreList();
-    }
-
-    public Set<Channel> getChannels() {
-        return channels;
+    public Map<String, String> getIgnoreList() {
+        return ignoreList;
     }
 
     public void setCurrentMuteChannel(String currentMuteChannel) {
@@ -80,10 +83,22 @@ public class ServerState implements Serializable {
         this.hostedBattle = hostedBattle;
     }
 
-    public void searchBattles() {
+    public void printBattles() {
         System.out.println("------------------+");
         for (Battle battle : battles){
-            System.out.println("             serverState.getBattles = " + battle);
+            System.out.println(battle.getUsers() + "             " + battle);
+        }
+        System.out.println("------------------");
+    }public void printUsers() {
+        System.out.println("------------------+");
+        for (User user : usersOnline){
+            System.out.println("             " + user);
+        }
+        System.out.println("------------------");
+    }public void printChannels() {
+        System.out.println("------------------+");
+        for (Channel channel : channels){
+            System.out.println("             Channels = " + channel);
         }
         System.out.println("------------------");
     }
