@@ -3,24 +3,12 @@ package com.jamerlan.utils;
 import com.jamerlan.ServerState;
 import com.jamerlan.model.Battle;
 
-import java.util.Iterator;
-
-/**
- * Created by Elt on 21.10.2016.
- */
-public class SearchBattle{
-    private ServerState serverState;
-    private int battleID;
-    private int port;
+public class SearchBattle implements Comparable{
 
     public Battle byBattleId(ServerState serverState, int battleID){
-        this.serverState = serverState;
-        this.battleID = battleID;
         Battle searchedBattle = null;
-        Iterator<Battle> iterator = serverState.getBattles().iterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            if(battle.getBattleId()==battleID){
+        for (Battle battle : serverState.getBattles()) {
+            if (battle.getBattleId() == battleID) {
                 searchedBattle = battle;
             }
         }
@@ -34,16 +22,18 @@ public class SearchBattle{
     }
 
     public Battle byPort(ServerState serverState, int port){
-        this.serverState = serverState;
-        this.port = port;
         Battle searchedBattle = null;
-        Iterator<Battle> iterator = serverState.getBattles().iterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            if(battle.getPort()==port){
+        for (Battle battle : serverState.getBattles()) {
+            if (battle.getPort() == port) {
                 searchedBattle = battle;
             }
         }
         return searchedBattle;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Battle battle = (Battle) o;
+        return 0;
     }
 }

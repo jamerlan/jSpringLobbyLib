@@ -3,7 +3,7 @@ package com.jamerlan.model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Battle {
+public class Battle implements Comparable{
     private Set<User> users;
     private int battleId;
     private int type;
@@ -92,52 +92,8 @@ public class Battle {
         return battleId;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public int getNatType() {
-        return natType;
-    }
-
-    public String getFouder() {
-        return fouder;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
     public int getPort() {
         return port;
-    }
-
-    public int getMaxPlayers() {
-        return maxPlayers;
-    }
-
-    public int getPassworded() {
-        return passworded;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public int getMapHash() {
-        return mapHash;
-    }
-
-    public String getLocked() {
-        return locked;
-    }
-
-    public String getSpectatorCount() {
-        return spectatorCount;
-    }
-
-    public String getMapName() {
-        return mapName;
     }
 
     public Set<User> getUsers() {
@@ -146,14 +102,6 @@ public class Battle {
 
     public void setUsers(Set<User> users) {
         this.users = users;
-    }
-
-    public void removeUser(String userName) {
-        users.remove(userName);
-    }
-
-    public void setBattleId(int battleId) {
-        this.battleId = battleId;
     }
 
     public void setType(int type) {
@@ -204,16 +152,8 @@ public class Battle {
         this.mapName = mapName;
     }
 
-    public String getGameName() {
-        return gameName;
-    }
-
     public void setGameName(String gameName) {
         this.gameName = gameName;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public void setTitle(String title) {
@@ -238,5 +178,10 @@ public class Battle {
                 ", spectatorCount='" + spectatorCount + '\'' +
                 ", mapName='" + mapName + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.battleId -((Battle) o).battleId;
     }
 }

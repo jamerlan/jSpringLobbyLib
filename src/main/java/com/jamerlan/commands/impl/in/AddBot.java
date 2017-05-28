@@ -9,6 +9,9 @@ import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  ADDBOT battleID name owner battleStatus teamColor {ai dll}
@@ -37,8 +40,8 @@ public class AddBot implements Command {
         bot.setBattleStatus(battleStatus);
         bot.setTeamColor(teamColor);
         serverState.getUsersOnline().add(bot);
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleID);
-        battle.getUsers().add(bot);
+        HashSet<Battle> battles = (HashSet<Battle>) serverState.getBattles();
+        battles.stream().sorted().filter(b -> b.getBattleId()==(battleID)).forEach((b)->b.getUsers().add(bot));
+
     }
 }

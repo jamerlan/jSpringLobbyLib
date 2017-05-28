@@ -9,7 +9,7 @@ import java.io.Serializable;
  ADDUSER amadeustekken FR 0
  ADDUSER [ACE]babar FR 0
  */
-public class User implements Serializable {
+public class User implements Serializable, Comparable {
     private final String userName;
     private String country;
     private final int cpu = 0;
@@ -124,5 +124,12 @@ public class User implements Serializable {
                 ", ip='" + ip + '\'' +
                 ", port=" + port +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        User user = (User) o;
+
+        return 0;
     }
 }

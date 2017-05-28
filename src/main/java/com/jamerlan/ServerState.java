@@ -11,7 +11,7 @@ import java.util.*;
 
 
 public class ServerState implements Serializable {
-    Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
+    private Account account = new Account("[ru]test","test", 8888, "*", "java test", 34523452);
 
     private Map<String, String> ignoreList = new HashMap<>();
 
@@ -59,10 +59,6 @@ public class ServerState implements Serializable {
         return account;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public Map<String, String> getIgnoreList() {
         return ignoreList;
     }
@@ -75,12 +71,12 @@ public class ServerState implements Serializable {
         return currentMuteChannel;
     }
 
-    public Battle getHostedBattle() {
-        return hostedBattle;
-    }
-
     public void setHostedBattle(Battle hostedBattle) {
         this.hostedBattle = hostedBattle;
+    }
+
+    public void setBattles(Set<Battle> battles) {
+        this.battles = battles;
     }
 
     public void printBattles() {

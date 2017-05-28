@@ -10,6 +10,7 @@ import com.jamerlan.utils.SearchBattle;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
+import java.util.Optional;
 
 /**
  * BATTLEOPENED battleID type natType founder ip port maxPlayers passworded rank mapHash {engineName} {engineVersion} {map} {title} {gameName}
@@ -44,21 +45,21 @@ public class BattleOpened implements Command {
         String title = parser.getString("\t");
         String gameName = parser.getString();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleId);
-        battle.setType(type);
-        battle.setNatType(natType);
-        battle.setFouder(founder);
-        battle.setIp(ip);
-        battle.setPort(port);
-        battle.setMaxPlayers(maxPlayers);
-        battle.setPassworded(passworded);
-        battle.setRank(rank);
-        battle.setMapHash(mapHash);
-        battle.setMapName(mapName);
-        battle.setTitle(title);
-        battle.setGameName(gameName);
+        serverState.getBattles().stream().filter((Battle b) -> b.getBattleId() == battleId).findAny().ifPresent((Battle battle) -> {
+            battle.setType(type);
+            battle.setNatType(natType);
+            battle.setFouder(founder);
+            battle.setIp(ip);
+            battle.setPort(port);
+            battle.setMaxPlayers(maxPlayers);
+            battle.setPassworded(passworded);
+            battle.setRank(rank);
+            battle.setMapHash(mapHash);
+            battle.setMapName(mapName);
+            battle.setTitle(title);
+            battle.setGameName(gameName);
 
-        battle.setUsers(new HashSet<User>());
+            battle.setUsers(new HashSet<>());
+        });
     }
 }
