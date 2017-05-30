@@ -10,6 +10,7 @@ import com.jamerlan.utils.CommandParser;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 /*LEFTBATTLE battleID userName*/
 
@@ -29,16 +30,19 @@ public class LeftBattle implements Command {
 
         String userName = commandParser.getString();
 
-        Iterator<Battle> iterator = serverState.getBattles().iterator();
-        while (iterator.hasNext()){
-            Battle battle = iterator.next();
-            Iterator<User> iteratorUsers = battle.getUsers().iterator();
-            while (iteratorUsers.hasNext()) {
-                User users = iteratorUsers.next();
-                if (users.getUserName().equals(userName)) {
-                    iterator.remove();
-                }
-            }
-        }
+        serverState.getBattles().stream().peek(b -> b.getUsers().stream().filter(u -> !(u.getUserName().equals(userName)))).collect(Collectors.toSet());
+
+
+//        Iterator<Battle> iterator = serverState.getBattles().iterator();
+//        while (iterator.hasNext()){
+//            Battle battle = iterator.next();
+//            Iterator<User> iteratorUsers = battle.getUsers().iterator();
+//            while (iteratorUsers.hasNext()) {
+//                User users = iteratorUsers.next();
+//                if (users.getUserName().equals(userName)) {
+//                    iterator.remove();
+//                }
+//            }
+//        }
     }
 }
