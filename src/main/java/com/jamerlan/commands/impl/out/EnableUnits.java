@@ -24,9 +24,8 @@ public class EnableUnits implements Command{
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.print("ENABLEUNITS ");
-        Iterator<String> iterator = units.iterator();
-        while(iterator.hasNext()){
-            writer.print(iterator.next() + " ");
+        for (String unit : units) {
+            writer.print(unit + " ");
         }
         writer.println();
     }
