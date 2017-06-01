@@ -10,6 +10,7 @@ import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 /**
  JOINEDBATTLE battleID userName [scriptPassword]
@@ -31,10 +32,7 @@ public class JoinedBattle implements Command{
         int battleId = parser.getInt(" ");
         String userName = parser.getString();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleId);
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, userName);
-        battle.getUsers().add(user);
+        Optional<User> user = serverState.getUsersOnline().stream().filter(user1 -> user1.getUserName().equals(userName)).findAny();
+        serverState.getBattles().stream().filter(battle -> battle.getBattleId()==battleId).findAny().ifPresent(battle -> user.ifPresent(user1 -> battle.getUsers().add(user1)));
     }
 }
