@@ -30,7 +30,6 @@ public class BattleClosed implements Command {
 
         Integer battleID = parser.getInt();
 
-        Optional<Battle> battle = serverState.getBattles().stream().filter(b -> b.getBattleId()==(battleID)).findFirst();
-        battle.ifPresent(battle1 -> serverState.getBattles().remove(battle.get()));
+        serverState.getBattles().stream().filter(b -> b.getBattleId()==(battleID)).findFirst().ifPresent(serverState.getBattles()::remove);
     }
 }
