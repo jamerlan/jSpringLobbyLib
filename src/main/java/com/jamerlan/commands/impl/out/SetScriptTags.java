@@ -25,9 +25,7 @@ public class SetScriptTags implements Command {
     public void execute(PrintWriter writer) throws IOException {
         writer.print("SETSCRIPTTAGS");
 
-        for (HashMap.Entry entry : scriptTags.entrySet()) {
-            writer.print(" " + entry.getKey() + " " + entry.getValue());
-        }
+        scriptTags.entrySet().forEach(entry->    writer.print(" " + entry.getKey() + " " + entry.getValue()));
         writer.println();
     }
 }
