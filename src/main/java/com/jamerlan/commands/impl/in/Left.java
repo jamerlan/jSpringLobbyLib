@@ -29,6 +29,7 @@ public class Left implements Command {
         if (parser.hasNext(" ")){
             String userName = parser.getString(" ");
             String reason = parser.getString();
+
             serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(chanName)).findAny().ifPresent(channel -> channel.getClients().remove(userName));
         }else {
             String userName = parser.getString();

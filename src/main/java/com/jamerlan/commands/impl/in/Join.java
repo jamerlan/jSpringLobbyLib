@@ -28,8 +28,6 @@ public class Join implements Command {
 
         String chanName = parser.getString();
 
-        Optional<Channel> channel = serverState.getChannels().stream().filter(channel1 -> channel1.getChanName().equals(chanName)).findAny();
-
-        channel.ifPresent(channel1 -> serverState.getAccount().getChannelList().add(channel1));
+        serverState.getChannels().stream().filter(channel1 -> channel1.getChanName().equals(chanName)).findAny().ifPresent(channel1 -> serverState.getAccount().getChannelList().add(channel1));
     }
 }

@@ -30,11 +30,9 @@ public class AddUser implements Command{
         String country = parser.getString(" ");
         String accountId = parser.getString();
 
-        Optional<User> user = serverState.getUsersOnline().stream().filter(u -> u.getUserName().equals(userName)).peek((u) -> {
+        serverState.getUsersOnline().stream().filter(u -> u.getUserName().equals(userName)).peek((u) -> {
             u.setCountry(country);
             u.setAccountId(accountId);
-        }).findFirst();
-        user.ifPresent(user1 -> serverState.getUsersOnline().add(user1));
-
+        }).findFirst().ifPresent(user1 -> serverState.getUsersOnline().add(user1));
     }
 }
