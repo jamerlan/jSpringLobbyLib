@@ -2,14 +2,11 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.Battle;
 import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashSet;
 import java.util.Optional;
 
 /**

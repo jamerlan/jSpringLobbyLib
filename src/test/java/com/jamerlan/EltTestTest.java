@@ -4,7 +4,6 @@ import com.jamerlan.commands.impl.out.JoinBattle;
 import com.jamerlan.commands.impl.out.Login;
 import com.jamerlan.commands.impl.out.MyBattleStatus;
 import com.jamerlan.model.User;
-import com.jamerlan.utils.SearchUser;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -45,9 +44,6 @@ public class EltTestTest {
 
         Thread.sleep(6000);
 
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, "[ru]test");
-        System.out.println("User: " + user);
         serverState.printBattles();
     }
 }
