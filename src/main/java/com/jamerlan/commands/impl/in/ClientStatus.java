@@ -29,8 +29,6 @@ public class ClientStatus implements Command{
         String userName = parser.getString(" ");
         String status = parser.getString();
 
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, userName);
-        user.setStatus(status);
+        serverState.getUsersOnline().stream().filter(user -> user.getUserName().equals(userName)).findAny().ifPresent(user -> user.setStatus(status));
     }
 }
