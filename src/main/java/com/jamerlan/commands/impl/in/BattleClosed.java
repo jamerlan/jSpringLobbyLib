@@ -3,11 +3,13 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.model.Battle;
+import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
 import com.jamerlan.utils.SearchBattle;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 /**
  BATTLECLOSED battleID
@@ -28,8 +30,7 @@ public class BattleClosed implements Command {
 
         Integer battleID = parser.getInt();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleID);
-        serverState.getBattles().remove(battle);
+        Optional<Battle> battle = serverState.getBattles().stream().filter(b -> b.getBattleId()==(battleID)).findFirst();
+        battle.ifPresent(battle1 -> serverState.getBattles().remove(battle.get()));
     }
 }
