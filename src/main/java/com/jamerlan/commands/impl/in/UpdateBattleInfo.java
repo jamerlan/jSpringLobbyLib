@@ -34,11 +34,11 @@ public class UpdateBattleInfo implements Command{
         int mapHash = parser.getInt(" ");
         String mapName = parser.getString();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleId);
-        battle.setMapHash(mapHash);
-        battle.setMapName(mapName);
-        battle.setLocked(locked);
-        battle.setSpectatorCount(spectatorCount);
+        serverState.getBattles().stream().filter(battle -> battle.getBattleId()==battleId).findAny().ifPresent(battle -> {
+            battle.setMapHash(mapHash);
+            battle.setMapName(mapName);
+            battle.setLocked(locked);
+            battle.setSpectatorCount(spectatorCount);
+        });
     }
 }

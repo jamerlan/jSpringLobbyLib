@@ -27,8 +27,6 @@ public class RemoveUser implements Command {
 
         String userName = parser.getString();
 
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, userName);
-        serverState.getUsersOnline().remove(user);
+        serverState.getUsersOnline().stream().filter(user -> user.getUserName().equals(userName)).findAny().ifPresent(user -> serverState.getUsersOnline().remove(user));
     }
 }
