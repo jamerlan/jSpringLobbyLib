@@ -33,8 +33,6 @@ public class OpenBattle implements Command {
 
         int battleID = parser.getInt();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byBattleId(serverState, battleID);
-        serverState.setHostedBattle(battle);
+        serverState.getBattles().stream().filter(battle -> battle.getBattleId()==battleID).findAny().ifPresent(battle -> serverState.setHostedBattle(battle));
     }
 }
