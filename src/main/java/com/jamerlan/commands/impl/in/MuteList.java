@@ -32,8 +32,7 @@ public class MuteList implements Command {
 
         String muteDescription = parser.getString();
 
-        SearchChannel searchChannel = new SearchChannel();
-        Channel channel = searchChannel.byChanName(serverState, serverState.getCurrentMuteChannel());
-        channel.getMutelist().add(muteDescription);
+        serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(serverState.getCurrentMuteChannel())).findAny()
+                .ifPresent(channel -> channel.getMutelist().add(muteDescription));
     }
 }
