@@ -30,7 +30,7 @@ public class ForceJoinBattle implements Command {
         int destinationBattleID = parser.getInt("/t");
         String destinationBattlePassword = parser.getString();
 
-        com.jamerlan.commands.impl.out.JoinBattle joinBattle = new JoinBattle(destinationBattleID);
-        joinBattle.execute(serverState.getConnection().getWriter());
+        JoinBattle joinBattle = new JoinBattle(destinationBattleID);
+        joinBattle.execute(serverState.getConnection().getWriter());//Magic? Think about it later
     }
 }

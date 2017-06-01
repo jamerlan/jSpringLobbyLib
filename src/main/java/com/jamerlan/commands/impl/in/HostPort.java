@@ -28,8 +28,6 @@ public class HostPort implements Command {
 
         int port = parser.getInt();
 
-        SearchBattle searchBattle = new SearchBattle();
-        Battle battle = searchBattle.byPort(serverState, port);
-        battle.setPort(port);
+        serverState.getBattles().stream().filter(battle -> battle.getPort()==port).findAny().ifPresent(battle -> battle.setPort(port)); //test it!
     }
 }
