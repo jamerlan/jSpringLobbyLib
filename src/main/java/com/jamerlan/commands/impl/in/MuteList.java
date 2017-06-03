@@ -2,9 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.Channel;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,8 +30,7 @@ public class MuteList implements Command {
 
         String muteDescription = parser.getString();
 
-        SearchChannel searchChannel = new SearchChannel();
-        Channel channel = searchChannel.byChanName(serverState, serverState.getCurrentMuteChannel());
-        channel.getMutelist().add(muteDescription);
+        serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(serverState.getCurrentMuteChannel())).findAny()
+                .ifPresent(channel -> channel.getMutelist().add(muteDescription));
     }
 }

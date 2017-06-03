@@ -2,9 +2,6 @@ package com.jamerlan.model;
 
 import java.io.Serializable;
 
-/**
- * Created by Elt on 21.10.2016.
- */
 public class Bot extends User implements Serializable {
     private String owner;
     private String aiDll;

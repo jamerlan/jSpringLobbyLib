@@ -2,9 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,8 +26,6 @@ public class IgnoreList implements Command {
 
         String userNameWord = parser.getString("=");
         String userName = parser.getString("\t");
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, userName);
 
         if (parser.hasNext("=")){
             String reasonWord = parser.getString("=");

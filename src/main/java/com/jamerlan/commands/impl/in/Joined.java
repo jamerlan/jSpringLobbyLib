@@ -3,7 +3,6 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,8 +27,6 @@ public class Joined implements Command {
         String chanName = parser.getString(" ");
         String userName = parser.getString();
 
-        SearchChannel searchChannel = new SearchChannel();
-        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
-        channel.getClients().add(userName);
+        serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(chanName)).findAny().ifPresent(channel -> channel.getClients().add(userName));
     }
 }

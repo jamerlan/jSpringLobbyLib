@@ -2,9 +2,7 @@ package com.jamerlan.commands.impl.in;
 
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
-import com.jamerlan.model.User;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,9 +28,9 @@ public class ClientIpPort implements Command {
         String ip = parser.getString(" ");
         int port = parser.getInt();
 
-        SearchUser searchUser = new SearchUser();
-        User user = searchUser.byUserName(serverState, userName);
-        user.setIp(ip);
-        user.setPort(port);
+        serverState.getUsersOnline().stream().filter(user -> user.getUserName().equals(userName)).findAny().ifPresent(user -> {
+            user.setIp(ip);
+            user.setPort(port);
+        });
     }
 }

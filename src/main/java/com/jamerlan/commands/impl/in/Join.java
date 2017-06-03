@@ -3,9 +3,11 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
+import com.jamerlan.model.Channel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 /**
  JOIN chanName
@@ -26,11 +28,8 @@ public class Join implements Command {
 
         String chanName = parser.getString();
 
-        for (com.jamerlan.model.Channel channel:serverState.getChannels()) {
-            if(chanName.equals(channel.getChanName())) {
-                serverState.getAccount().getChannelList().add(channel);
-            }
-        }
+        Optional<Channel> channel = serverState.getChannels().stream().filter(channel1 -> channel1.getChanName().equals(chanName)).findAny();
 
+        channel.ifPresent(channel1 -> serverState.getAccount().getChannelList().add(channel1));
     }
 }

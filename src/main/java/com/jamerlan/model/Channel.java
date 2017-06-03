@@ -2,10 +2,6 @@ package com.jamerlan.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Elt on 20.10.2016.
- */
-
 public class Channel {
     private String chanName;
     private int userCount;

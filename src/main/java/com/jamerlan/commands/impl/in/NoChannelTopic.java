@@ -3,7 +3,6 @@ package com.jamerlan.commands.impl.in;
 import com.jamerlan.ServerState;
 import com.jamerlan.commands.Command;
 import com.jamerlan.utils.CommandParser;
-import com.jamerlan.utils.SearchChannel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,10 +25,11 @@ public class NoChannelTopic implements Command {
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString();
-        SearchChannel searchChannel = new SearchChannel();
-        com.jamerlan.model.Channel channel = searchChannel.byChanName(serverState, chanName);
-        channel.setTopicAuthor("");
-        channel.setTopicChangedTime("");
-        channel.setTopic("");
+
+        serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(chanName)).findAny().ifPresent(channel -> {
+            channel.setTopic("");
+            channel.setTopicChangedTime("");
+            channel.setTopicAuthor("");
+        });
     }
 }

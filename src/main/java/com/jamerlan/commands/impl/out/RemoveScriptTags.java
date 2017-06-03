@@ -24,9 +24,8 @@ public class RemoveScriptTags implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.print("REMOVESCRIPTTAGS ");
-        Iterator iterator = keys.iterator();
-        while (iterator.hasNext()){
-            writer.print(iterator.next() + " ");
+        for (Object key : keys) {
+            writer.print(key + " ");
         }
         writer.println();
     }
