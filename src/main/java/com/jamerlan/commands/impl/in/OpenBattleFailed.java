@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  * OPENBATTLEFAILED {reason}
  */
-public class OpenBattleFailed implements Command{
-    private String line;
+public class OpenBattleFailed implements Command<String>{
+
     private ServerState serverState;
 
-    public OpenBattleFailed (String line, ServerState serverState) {
-        this.line = line;
+    public OpenBattleFailed (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

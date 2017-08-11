@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  LEAVE chanName
  */
-public class Leave implements Command {
+public class Leave implements Command<PrintWriter> {
     private String chanName;
 
     public Leave(String chanName) {

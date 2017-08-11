@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * CHANNELTOPIC chanName {topic}
  */
-public class ChannelTopic implements Command{
+public class ChannelTopic implements Command<PrintWriter>{
     private String chanName;
     private String topic;
 

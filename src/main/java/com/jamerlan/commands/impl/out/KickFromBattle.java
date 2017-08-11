@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  KICKFROMBATTLE userName
  */
-public class KickFromBattle implements Command {
+public class KickFromBattle implements Command<PrintWriter> {
     private String userName;
 
     public KickFromBattle(String userName) {

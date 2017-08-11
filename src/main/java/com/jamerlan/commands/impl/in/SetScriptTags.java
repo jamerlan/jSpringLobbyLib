@@ -11,17 +11,17 @@ import java.util.ArrayList;
 /**
  SETSCRIPTTAGS {pair1} [{pair2}] [{pair3}] [{...}]
  */
-public class SetScriptTags implements Command {
-    private String line;
+public class SetScriptTags implements Command<String> {
+
     private ServerState serverState;
 
-    public SetScriptTags(String line, ServerState serverState) {
-        this.line = line;
+    public SetScriptTags(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  RENAMEACCOUNT newUsername
  */
-public class RenameAccount implements Command {
+public class RenameAccount implements Command<PrintWriter> {
     private String newUserName;
     @Override
     public void execute(PrintWriter writer) throws IOException {

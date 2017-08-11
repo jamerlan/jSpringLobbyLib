@@ -11,17 +11,17 @@ import java.io.PrintWriter;
  RING userName
  TODO: client should play the "ring" sound
  */
-public class Ring implements Command {
-    private String line;
+public class Ring implements Command<String> {
+
     private ServerState serverState;
 
-    public Ring(String line, ServerState serverState) {
-        this.line = line;
+    public Ring(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

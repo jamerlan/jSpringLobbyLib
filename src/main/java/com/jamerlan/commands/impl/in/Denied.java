@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  * DENIED {reason}
  */
-public class Denied implements Command {
-    private String line;
+public class Denied implements Command<String> {
+
     private ServerState serverState;
 
-    public Denied(String line, ServerState serverState) {
-        this.line = line;
+    public Denied(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

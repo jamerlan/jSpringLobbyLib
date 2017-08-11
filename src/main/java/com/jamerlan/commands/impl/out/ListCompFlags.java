@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  LISTCOMPFLAGS
  */
-public class ListCompFlags implements Command {
+public class ListCompFlags implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("LISTCOMPFLAGS");

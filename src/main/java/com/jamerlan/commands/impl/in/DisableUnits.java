@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  * DISABLEUNITS unitName1 [unitName2] [...]
  */
-public class DisableUnits implements Command {
-    private String line;
+public class DisableUnits implements Command<String> {
+
     private ServerState serverState;
 
-    public DisableUnits(String line, ServerState serverState) {
-        this.line = line;
+    public DisableUnits(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

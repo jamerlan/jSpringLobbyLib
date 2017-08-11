@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  OPENBATTLE type natType password port maxPlayers gameHash rank mapHash {engineName} {engineVersion} {map} {title} {gameName}
  */
-public class OpenBattle implements Command {
+public class OpenBattle implements Command<PrintWriter> {
     private int type;
     private int natType;
     private String password;

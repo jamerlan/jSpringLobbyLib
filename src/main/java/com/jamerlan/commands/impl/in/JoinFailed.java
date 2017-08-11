@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  *JOINFAILED chanName {reason}
  */
-public class JoinFailed implements Command {
-    private String line;
+public class JoinFailed implements Command<String> {
+
     private ServerState serverState;
 
-    public JoinFailed (String line, ServerState serverState) {
-        this.line = line;
+    public JoinFailed (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

@@ -6,7 +6,7 @@ import com.jamerlan.commands.Command;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class JoinBattle implements Command {
+public class JoinBattle implements Command<PrintWriter> {
     private int battleID;
 
     public JoinBattle(int battleID){

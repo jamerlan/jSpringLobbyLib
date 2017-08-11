@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  JOIN chanName [key]
  */
-public class Join implements Command {
+public class Join implements Command<PrintWriter> {
     private String chanName;
     private String key;
 

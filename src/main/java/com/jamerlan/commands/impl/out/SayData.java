@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  SAYDATA chanName {message}
  */
-public class SayData implements Command {
+public class SayData implements Command<PrintWriter> {
     private String chanName;
     private String message;
 

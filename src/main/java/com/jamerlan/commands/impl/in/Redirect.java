@@ -11,17 +11,17 @@ import java.io.PrintWriter;
  REDIRECT ip port
  TODO: change GameConstants?
  */
-public class Redirect implements Command {
-    private String line;
+public class Redirect implements Command<String> {
+
     private ServerState serverState;
 
-    public Redirect (String line, ServerState serverState) {
-        this.line = line;
+    public Redirect (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

@@ -13,17 +13,17 @@ import java.io.PrintWriter;
  TODO: The receiving client must subsequently comply by sending a JOINBATTLE command to the server. See the Match-Making
  section in the beginning of this document for more details.
  */
-public class ForceJoinBattle implements Command {
-    private String line;
+public class ForceJoinBattle implements Command<String> {
+
     private ServerState serverState;
 
-    public ForceJoinBattle(String line, ServerState serverState) {
-        this.line = line;
+    public ForceJoinBattle(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

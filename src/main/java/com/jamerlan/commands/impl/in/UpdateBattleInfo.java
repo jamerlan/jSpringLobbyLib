@@ -12,17 +12,17 @@ import java.io.PrintWriter;
 /**
  * UPDATEBATTLEINFO battleID spectatorCount locked mapHash {mapName}
  */
-public class UpdateBattleInfo implements Command{
-    private String line;
+public class UpdateBattleInfo implements Command<String>{
+
     private ServerState serverState;
 
-    public UpdateBattleInfo(String line, ServerState serverState) {
-        this.line = line;
+    public UpdateBattleInfo(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

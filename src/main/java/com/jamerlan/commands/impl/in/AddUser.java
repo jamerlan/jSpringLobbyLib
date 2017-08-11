@@ -12,17 +12,17 @@ import java.util.Optional;
 /**
  //ADDUSER [DoR]Isildur[teh] US 0
  */
-public class AddUser implements Command{
-    private String line;
+public class AddUser implements Command<String>{
+
     private ServerState serverState;
 
-    public AddUser(String line, ServerState serverState) {
-        this.line = line;
+    public AddUser(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

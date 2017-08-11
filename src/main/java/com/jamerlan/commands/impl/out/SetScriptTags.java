@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  SETSCRIPTTAGS {pair1} [{pair2}] [{pair3}] [{...}]
  */
-public class SetScriptTags implements Command {
+public class SetScriptTags implements Command<PrintWriter> {
     private HashMap<String,Integer> scriptTags;
 
     public HashMap<String, Integer> getScriptTags() {

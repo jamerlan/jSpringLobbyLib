@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  REMOVESCRIPTTAGS key1 [key2] [key3] [...]
  */
-public class RemoveScriptTags implements Command {
+public class RemoveScriptTags implements Command<PrintWriter> {
     private ArrayList<String> keys;
 
     public RemoveScriptTags(ArrayList<String> keys) {

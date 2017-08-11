@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  PONG
  */
-public class Pong implements Command {
-    private String line;
+public class Pong implements Command<String> {
+
     private ServerState serverState;
 
-    public Pong (String line, ServerState serverState) {
-        this.line = line;
+    public Pong (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString();
     }

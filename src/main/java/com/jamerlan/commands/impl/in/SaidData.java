@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  SAIDDATA chanName userName {message}
  */
-public class SaidData implements Command {
-    private String line;
+public class SaidData implements Command<String> {
+
     private ServerState serverState;
 
-    public SaidData (String line, ServerState serverState) {
-        this.line = line;
+    public SaidData (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

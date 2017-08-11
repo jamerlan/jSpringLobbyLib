@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  GETINGAMETIME
  */
-public class GetIngameTime implements Command{
+public class GetIngameTime implements Command<PrintWriter>{
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("GETINGAMETIME");

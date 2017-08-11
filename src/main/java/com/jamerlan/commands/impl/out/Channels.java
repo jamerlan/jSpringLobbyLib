@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * Created by Elt on 05.10.2016.
  */
-public class Channels implements Command {
+public class Channels implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("CHANNELS");

@@ -4,7 +4,7 @@ import com.jamerlan.commands.Command;
 
 import java.io.PrintWriter;
 
-public class MyBattleStatus implements Command{
+public class MyBattleStatus implements Command<PrintWriter>{
 //     private String battleStatus;
      private int teamColor;
     private int ready = 0;

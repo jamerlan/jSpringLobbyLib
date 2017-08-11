@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  JOINBATTLEDENY userName [{reason}]
  */
-public class JoinBattleDeny implements Command {
+public class JoinBattleDeny implements Command<PrintWriter> {
     private String userName;
     private String reason;
 

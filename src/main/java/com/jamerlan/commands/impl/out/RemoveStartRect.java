@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  REMOVESTARTRECT allyNo
  */
-public class RemoveStartRect implements Command {
+public class RemoveStartRect implements Command<PrintWriter> {
     private String allyNo;
 
     public RemoveStartRect(String allyNo) {

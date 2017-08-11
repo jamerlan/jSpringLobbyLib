@@ -9,7 +9,7 @@ import java.io.PrintWriter;
  UNIGNORE userName=value
  Example:    UNIGNORE userName=joe
  */
-public class UnIgnore implements Command {
+public class UnIgnore implements Command<PrintWriter> {
     private String userName;
 
     public UnIgnore(String userName) {

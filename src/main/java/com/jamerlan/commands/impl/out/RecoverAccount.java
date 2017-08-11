@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  RECOVERACCOUNT email [userName]
  */
-public class RecoverAccount implements Command {
+public class RecoverAccount implements Command<PrintWriter> {
     private String email;
     private String userName;
 

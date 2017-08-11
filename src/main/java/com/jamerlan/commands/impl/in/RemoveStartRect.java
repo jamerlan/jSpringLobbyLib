@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  REMOVESTARTRECT allyNo
  */
-public class RemoveStartRect implements Command {
-    private String line;
+public class RemoveStartRect implements Command<String> {
+
     private ServerState serverState;
 
-    public RemoveStartRect(String line, ServerState serverState) {
-        this.line = line;
+    public RemoveStartRect(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

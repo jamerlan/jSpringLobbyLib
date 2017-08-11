@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  MUTELISTBEGIN chanName
  */
-public class MuteListBegin implements Command {
-    private String line;
+public class MuteListBegin implements Command<String> {
+
     private ServerState serverState;
 
-    public MuteListBegin(String line, ServerState serverState) {
-        this.line = line;
+    public MuteListBegin(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

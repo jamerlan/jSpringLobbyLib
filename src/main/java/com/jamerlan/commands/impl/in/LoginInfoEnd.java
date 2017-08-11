@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  LOGININFOEND
  */
-public class LoginInfoEnd implements Command {
-    private String line;
+public class LoginInfoEnd implements Command<String> {
+
     private ServerState serverState;
 
-    public LoginInfoEnd(String line, ServerState serverState) {
-        this.line = line;
+    public LoginInfoEnd(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser commandParser = new CommandParser(line);
         String commandName = commandParser.getString();
     }

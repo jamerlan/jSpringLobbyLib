@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  PING
  */
-public class Ping implements Command {
+public class Ping implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("PING");

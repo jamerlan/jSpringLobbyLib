@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  FORCESPECTATORMODE userName
  */
-public class ForceSpectatorMode implements Command{
+public class ForceSpectatorMode implements Command<PrintWriter>{
     private String userName;
 
     public ForceSpectatorMode(String userName) {

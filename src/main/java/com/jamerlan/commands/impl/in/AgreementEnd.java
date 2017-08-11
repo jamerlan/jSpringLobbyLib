@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  AGREEMENTEND
  */
-public class AgreementEnd implements Command {
-    private String line;
+public class AgreementEnd implements Command<String> {
+
     private ServerState serverState;
 
-    public AgreementEnd(String line, ServerState serverState) {
-        this.line = line;
+    public AgreementEnd(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString();
 

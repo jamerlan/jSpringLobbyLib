@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  * ENABLEUNITS unitName1 [unitName2] [...]
  */
-public class EnableUnits implements Command{
+public class EnableUnits implements Command<PrintWriter>{
     private ArrayList<String> units; //must be not null
 
     public EnableUnits(ArrayList<String> units) {

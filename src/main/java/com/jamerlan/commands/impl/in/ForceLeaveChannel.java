@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  FORCELEAVECHANNEL chanName userName [{reason}]
  */
-public class ForceLeaveChannel implements Command {
-    private String line;
+public class ForceLeaveChannel implements Command<String> {
+
     private ServerState serverState;
 
-    public ForceLeaveChannel(String line, ServerState serverState) {
-        this.line = line;
+    public ForceLeaveChannel(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

@@ -11,17 +11,17 @@ import java.io.PrintWriter;
 /**
  ADDBOT battleID name owner battleStatus teamColor {ai dll}
  */
-public class AddBot implements Command {
-    private String line;
+public class AddBot implements Command<String> {
+
     private ServerState serverState;
 
-    public AddBot(String line, ServerState serverState) {
-        this.line = line;
+    public AddBot(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

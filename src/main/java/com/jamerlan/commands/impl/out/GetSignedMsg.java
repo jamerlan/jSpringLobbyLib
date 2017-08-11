@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  GETSIGNEDMSG [message_to_sign]
  */
-public class GetSignedMsg implements Command {
+public class GetSignedMsg implements Command<PrintWriter>{
     private String message;
 
     public GetSignedMsg(String message) {

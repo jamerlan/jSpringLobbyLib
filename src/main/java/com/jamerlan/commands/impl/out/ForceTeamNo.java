@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  FORCETEAMNO userName teamNo
  */
-public class ForceTeamNo implements Command{
+public class ForceTeamNo implements Command<PrintWriter>{
     private String userName;
     private String teamNo;
 

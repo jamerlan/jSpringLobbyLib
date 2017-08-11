@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  SAYDATABATTLE {message}
  */
-public class SayDataBattle implements Command {
+public class SayDataBattle implements Command<PrintWriter> {
     private String message;
 
     public SayDataBattle(String message) {

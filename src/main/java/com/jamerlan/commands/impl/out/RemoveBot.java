@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  REMOVEBOT name
  */
-public class RemoveBot implements Command {
+public class RemoveBot implements Command<PrintWriter> {
     private String name;
 
     public RemoveBot(String name) {
