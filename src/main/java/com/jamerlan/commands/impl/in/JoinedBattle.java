@@ -12,17 +12,17 @@ import java.util.Optional;
 /**
  JOINEDBATTLE battleID userName [scriptPassword]
  */
-public class JoinedBattle implements Command{
-    private String line;
+public class JoinedBattle implements Command<String>{
+
     private ServerState serverState;
 
-    public JoinedBattle(String line, ServerState serverState) {
-        this.line = line;
+    public JoinedBattle(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

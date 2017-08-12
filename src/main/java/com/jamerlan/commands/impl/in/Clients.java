@@ -13,17 +13,17 @@ import java.util.ArrayList;
  CLIENTS chanName {clients}
 
  */
-public class Clients implements Command {
-    private String line;
+public class Clients implements Command<String> {
+
     private ServerState serverState;
 
-    public Clients(String line, ServerState serverState) {
-        this.line = line;
+    public Clients(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

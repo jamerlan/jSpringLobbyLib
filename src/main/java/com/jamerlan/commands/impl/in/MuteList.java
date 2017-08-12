@@ -14,17 +14,17 @@ import java.io.PrintWriter;
  mute description: The form of this argument is not prescribed (it may vary from version to version).
  The lobby client program should simply display it as it receives it.
  */
-public class MuteList implements Command {
-    private String line;
+public class MuteList implements Command<String> {
+
     private ServerState serverState;
 
-    public MuteList (String line, ServerState serverState) {
-        this.line = line;
+    public MuteList (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

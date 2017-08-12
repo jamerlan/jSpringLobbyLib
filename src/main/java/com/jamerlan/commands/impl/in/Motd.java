@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  MOTD {message}
  */
-public class Motd implements Command {
-    private String line;
+public class Motd implements Command<String> {
+
     private ServerState serverState;
 
-    public Motd(String line, ServerState serverState) {
-        this.line = line;
+    public Motd(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

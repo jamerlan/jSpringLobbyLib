@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  IGNORELISTBEGIN
  */
-public class IgnoreListBegin implements Command {
-    private String line;
+public class IgnoreListBegin implements Command<String> {
+
     private ServerState serverState;
 
-    public IgnoreListBegin (String line, ServerState serverState) {
-        this.line = line;
+    public IgnoreListBegin (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

@@ -14,17 +14,17 @@ import java.util.HashSet;
  *
  * BATTLEOPENED 20535 0 0 EvoRTSDedicated4 54.183.228.213 8254 8 0 0 540337253 Archers Battlefield - v05	Evolution RTS Dedicated Host 4	Evolution RTS - v10.17
  */
-public class BattleOpened implements Command {
-    private String line;
+public class BattleOpened implements Command<String> {
+
     private ServerState serverState;
 
-    public BattleOpened(String line, ServerState serverState) {
-        this.line = line;
+    public BattleOpened(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

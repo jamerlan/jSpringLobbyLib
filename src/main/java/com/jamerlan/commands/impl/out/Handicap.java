@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  HANDICAP userName value
  */
-public class Handicap implements Command {
+public class Handicap implements Command<PrintWriter>{
     private String userName;
     private int value;
 

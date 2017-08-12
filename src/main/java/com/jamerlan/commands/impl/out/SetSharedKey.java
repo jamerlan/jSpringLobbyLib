@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  SETSHAREDKEY [session_key]
  */
-public class SetSharedKey implements Command {
+public class SetSharedKey implements Command<PrintWriter> {
     private String sessionKey;
 
     public SetSharedKey(String sessionKey) {

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  JOINBATTLEACCEPT userName
  */
-public class JoinBattleAccept implements Command {
+public class JoinBattleAccept implements Command<PrintWriter> {
     private String userName;
 
     public JoinBattleAccept(String userName) {

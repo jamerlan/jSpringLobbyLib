@@ -14,17 +14,17 @@ import java.util.stream.Collectors;
 
 /*LEFTBATTLE battleID userName*/
 
-public class LeftBattle implements Command {
-    private String line;
+public class LeftBattle implements Command<String> {
+
     private ServerState serverState;
 
-    public LeftBattle(String line, ServerState serverState) {
-        this.line = line;
+    public LeftBattle(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser commandParser = new CommandParser(line);
         String commandName = commandParser.getString(" ");
 

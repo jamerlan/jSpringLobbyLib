@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  LEFT chanName userName [{reason}]
  */
-public class Left implements Command {
-    private String line;
+public class Left implements Command<String> {
+
     private ServerState serverState;
 
-    public Left(String line, ServerState serverState) {
-        this.line = line;
+    public Left(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
@@ -29,6 +29,7 @@ public class Left implements Command {
         if (parser.hasNext(" ")){
             String userName = parser.getString(" ");
             String reason = parser.getString();
+
             serverState.getChannels().stream().filter(channel -> channel.getChanName().equals(chanName)).findAny().ifPresent(channel -> channel.getClients().remove(userName));
         }else {
             String userName = parser.getString();

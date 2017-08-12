@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  RING userName
  */
-public class Ring implements Command {
+public class Ring implements Command<PrintWriter> {
     private String userName;
 
     public Ring(String userName) {

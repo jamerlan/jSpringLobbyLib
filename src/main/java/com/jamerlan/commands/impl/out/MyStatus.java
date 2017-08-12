@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  MYSTATUS status
  */
-public class MyStatus implements Command {
+public class MyStatus implements Command<PrintWriter> {
     private int inGame;
     private int away;
 

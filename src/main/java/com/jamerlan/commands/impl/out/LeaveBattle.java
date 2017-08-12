@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  LEAVEBATTLE
  */
-public class LeaveBattle implements Command {
+public class LeaveBattle implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("LEAVEBATTLE");

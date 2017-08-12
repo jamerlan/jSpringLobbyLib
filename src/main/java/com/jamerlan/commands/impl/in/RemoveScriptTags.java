@@ -12,17 +12,17 @@ import java.util.ArrayList;
  REMOVESCRIPTTAGS key1 [key2] [key3] [...]
  TODO: add keys?
  */
-public class RemoveScriptTags implements Command {
-    private String line;
+public class RemoveScriptTags implements Command<String> {
+
     private ServerState serverState;
 
-    public RemoveScriptTags(String line, ServerState serverState) {
-        this.line = line;
+    public RemoveScriptTags(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

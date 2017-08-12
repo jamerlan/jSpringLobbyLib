@@ -6,6 +6,6 @@ import java.io.PrintWriter;
 /**
  * All parameters are passed to constructor of concrete command.
  */
-public interface Command {
-    void execute(PrintWriter writer) throws IOException;
+public interface Command<T> {
+    void execute(T arg) throws IOException;
 }

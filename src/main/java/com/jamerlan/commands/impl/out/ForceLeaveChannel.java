@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  FORCELEAVECHANNEL chanName userName [{reason}]
  */
-public class ForceLeaveChannel implements Command {
+public class ForceLeaveChannel implements Command<PrintWriter> {
     private String chanName;
     private String userName;
     private String reason;

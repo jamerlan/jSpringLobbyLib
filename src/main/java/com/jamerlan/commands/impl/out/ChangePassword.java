@@ -7,7 +7,7 @@ import com.jamerlan.utils.MD5Encoder;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ChangePassword implements Command{
+public class ChangePassword implements Command<PrintWriter>{
     private String oldPassword;
     private String newPassword;
 

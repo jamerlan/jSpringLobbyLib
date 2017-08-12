@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  REMOVESCRIPTTAGS key1 [key2] [key3] [...]
  */
-public class RemoveScriptTags implements Command {
+public class RemoveScriptTags implements Command<PrintWriter> {
     private ArrayList<String> keys;
 
     public RemoveScriptTags(ArrayList<String> keys) {
@@ -24,9 +24,7 @@ public class RemoveScriptTags implements Command {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.print("REMOVESCRIPTTAGS ");
-        for (Object key : keys) {
-            writer.print(key + " ");
-        }
+        keys.forEach(key->writer.print(key + " "));
         writer.println();
     }
 }

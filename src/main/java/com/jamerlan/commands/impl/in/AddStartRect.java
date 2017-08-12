@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  ADDSTARTRECT allyNo left top right bottom
  */
-public class AddStartRect implements Command {
-    private String line;
+public class AddStartRect implements Command<String> {
+
     private ServerState serverState;
 
-    public AddStartRect(String line, ServerState serverState) {
-        this.line = line;
+    public AddStartRect(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

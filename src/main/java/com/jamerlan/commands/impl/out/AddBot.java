@@ -9,7 +9,7 @@ import java.io.PrintWriter;
  * ADDBOT name battleStatus teamColor {ai dll}
  * TODO {ai dll} = ???
  */
-public class AddBot implements Command {
+public class AddBot implements Command<PrintWriter> {
     private String name;
     private String battleStatus;
     private String teamColor;

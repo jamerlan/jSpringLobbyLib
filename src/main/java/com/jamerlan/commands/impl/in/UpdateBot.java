@@ -11,17 +11,15 @@ import java.io.PrintWriter;
 /**
  UPDATEBOT battleID name battleStatus teamColor
  */
-public class UpdateBot implements Command {
-    private String line;
+public class UpdateBot implements Command<String> {
     private ServerState serverState;
 
-    public UpdateBot(String line, ServerState serverState) {
-        this.line = line;
+    public UpdateBot(ServerState serverState) {
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

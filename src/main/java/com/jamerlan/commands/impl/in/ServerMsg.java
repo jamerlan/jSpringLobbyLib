@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  * SERVERMSG {message}
  */
-public class ServerMsg implements Command {
-    private String line;
+public class ServerMsg implements Command<String> {
+
     private ServerState serverState;
 
-    public ServerMsg (String line, ServerState serverState) {
-        this.line = line;
+    public ServerMsg (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

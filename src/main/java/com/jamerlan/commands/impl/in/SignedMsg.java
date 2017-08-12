@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  SIGNEDMSG message_signature
  */
-public class SignedMsg implements Command {
-    private String line;
+public class SignedMsg implements Command<String> {
+
     private ServerState serverState;
 
-    public SignedMsg (String line, ServerState serverState) {
-        this.line = line;
+    public SignedMsg (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

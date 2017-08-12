@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  Examples
  UNSUBSCRIBE chanName=sy
  */
-public class Unsubscribe implements Command {
+public class Unsubscribe implements Command<PrintWriter> {
     private String chanName;
 
     public Unsubscribe(String chanName) {

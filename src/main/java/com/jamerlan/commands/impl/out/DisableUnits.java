@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  * DISABLEUNITS unitName1 [unitName2] [...]
  */
-public class DisableUnits implements Command{
+public class DisableUnits implements Command<PrintWriter>{
     private ArrayList<String> units; //must be not null
 
     public DisableUnits(ArrayList<String> units) {
@@ -24,9 +24,7 @@ public class DisableUnits implements Command{
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.print("DISABLEUNITS ");
-        for (String unit : units) {
-            writer.print(unit + " ");
-        }
+        units.forEach((unit)->writer.print(unit + " "));
         writer.println();
     }
 }

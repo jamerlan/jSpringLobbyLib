@@ -182,6 +182,10 @@ public class Battle implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return this.battleId -((Battle) o).battleId;
+        Battle battle = (Battle) o;
+        if (battle != null || !(getClass() != o.getClass()) || this.battleId!=battle.getBattleId()) {
+            return this.battleId - ((Battle) o).battleId;
+        }
+        return 0;
     }
 }

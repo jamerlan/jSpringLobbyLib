@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  FORCETEAMCOLOR userName color
  */
-public class ForceTeamColor implements Command{
+public class ForceTeamColor implements Command<PrintWriter>{
     private String userName;
     private String color;
 

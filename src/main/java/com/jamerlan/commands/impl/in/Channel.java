@@ -23,17 +23,17 @@ import java.io.PrintWriter;
  последней команды.
 
  */
-public class Channel implements Command {
-    private String line;
+public class Channel implements Command<String> {
+
     private ServerState serverState;
     private String topic;
-    public Channel(String line, ServerState serverState) {
-        this.line = line;
+    public Channel(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

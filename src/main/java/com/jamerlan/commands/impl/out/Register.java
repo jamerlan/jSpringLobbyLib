@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * REGISTER userName password [email]
  */
-public class Register implements Command {
+public class Register implements Command<PrintWriter>{
     private String userName;
     private String passwond;
     private String email;

@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  UNIGNORE userName=value
  */
-public class UnIgnore implements Command {
-    private String line;
+public class UnIgnore implements Command<String> {
+
     private ServerState serverState;
 
-    public UnIgnore(String line, ServerState serverState) {
-        this.line = line;
+    public UnIgnore(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

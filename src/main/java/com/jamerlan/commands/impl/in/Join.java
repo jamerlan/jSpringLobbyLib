@@ -12,24 +12,22 @@ import java.util.Optional;
 /**
  JOIN chanName
  */
-public class Join implements Command {
-    private String line;
+public class Join implements Command<String> {
+
     private ServerState serverState;
 
-    public Join (String line, ServerState serverState) {
-        this.line = line;
+    public Join (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 
         String chanName = parser.getString();
 
-        Optional<Channel> channel = serverState.getChannels().stream().filter(channel1 -> channel1.getChanName().equals(chanName)).findAny();
-
-        channel.ifPresent(channel1 -> serverState.getAccount().getChannelList().add(channel1));
+        serverState.getChannels().stream().filter(channel1 -> channel1.getChanName().equals(chanName)).findAny().ifPresent(channel1 -> serverState.getAccount().getChannelList().add(channel1));
     }
 }

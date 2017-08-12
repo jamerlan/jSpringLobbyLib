@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  SETSCRIPTTAGS {pair1} [{pair2}] [{pair3}] [{...}]
  */
-public class SetScriptTags implements Command {
+public class SetScriptTags implements Command<PrintWriter> {
     private HashMap<String,Integer> scriptTags;
 
     public HashMap<String, Integer> getScriptTags() {
@@ -25,9 +25,7 @@ public class SetScriptTags implements Command {
     public void execute(PrintWriter writer) throws IOException {
         writer.print("SETSCRIPTTAGS");
 
-        for (HashMap.Entry entry : scriptTags.entrySet()) {
-            writer.print(" " + entry.getKey() + " " + entry.getValue());
-        }
+        scriptTags.entrySet().forEach(entry->    writer.print(" " + entry.getKey() + " " + entry.getValue()));
         writer.println();
     }
 }

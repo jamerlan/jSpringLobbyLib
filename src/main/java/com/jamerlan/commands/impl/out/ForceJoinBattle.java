@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  *  FORCEJOINBATTLE userName destinationBattleID [destinationBattlePassword]
  */
-public class ForceJoinBattle implements Command{
+public class ForceJoinBattle implements Command<PrintWriter>{
     private String userName;
     private int destinationBattleID;
     private String destinationBattlePassword;

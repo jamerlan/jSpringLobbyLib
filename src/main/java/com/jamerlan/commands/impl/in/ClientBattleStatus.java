@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  CLIENTBATTLESTATUS userName battleStatus teamColor
  */
-public class ClientBattleStatus implements Command {
-    private String line;
+public class ClientBattleStatus implements Command<String> {
+
     private ServerState serverState;
 
-    public ClientBattleStatus(String line, ServerState serverState) {
-        this.line = line;
+    public ClientBattleStatus(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

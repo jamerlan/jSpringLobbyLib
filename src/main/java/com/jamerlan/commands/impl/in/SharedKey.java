@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  SHAREDKEY key_status key_digest [extra_data]
  */
-public class SharedKey implements Command {
-    private String line;
+public class SharedKey implements Command<String> {
+
     private ServerState serverState;
 
-    public SharedKey (String line, ServerState serverState) {
-        this.line = line;
+    public SharedKey (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

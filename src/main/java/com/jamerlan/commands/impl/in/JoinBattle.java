@@ -11,17 +11,17 @@ import java.io.PrintWriter;
  JOINBATTLE battleID hashCode
  TODO: String hashCode don't use
  */
-public class JoinBattle implements Command {
-    private String line;
+public class JoinBattle implements Command<String> {
+
     private ServerState serverState;
 
-    public JoinBattle (String line, ServerState serverState) {
-        this.line = line;
+    public JoinBattle (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

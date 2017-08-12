@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * GETPUBLICKEY
  */
-public class GetPublicKey implements Command {
+public class GetPublicKey implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("GETPUBLICKEY");

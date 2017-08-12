@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  SAYDATAPRIVATE userName {message}
  */
-public class SayDataPrivate implements Command {
+public class SayDataPrivate implements Command<PrintWriter> {
     private String userName;
     private String message;
 

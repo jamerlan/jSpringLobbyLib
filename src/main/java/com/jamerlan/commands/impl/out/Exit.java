@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  EXIT [{reason}]
  */
-public class Exit implements Command {
+public class Exit implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("EXIT");

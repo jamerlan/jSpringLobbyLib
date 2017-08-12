@@ -11,17 +11,17 @@ import java.io.PrintWriter;
 /**
  CHANNELTOPIC chanName author changedTime {topic}
  */
-public class ChannelTopic implements Command {
-    private String line;
+public class ChannelTopic implements Command<String> {
+
     private ServerState serverState;
 
-    public ChannelTopic(String line, ServerState serverState) {
-        this.line = line;
+    public ChannelTopic(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         System.out.println("                                        Topic Command Established!");
         String commandName = parser.getString(" ");

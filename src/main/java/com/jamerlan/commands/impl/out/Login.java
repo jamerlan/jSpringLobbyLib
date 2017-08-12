@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 //LOGIN userName password cpu localIP {lobby name and version} [userID] [{compFlags}]
-public class Login implements Command {
+public class Login implements Command<PrintWriter> {
 
     private final String login;
     private final String password;

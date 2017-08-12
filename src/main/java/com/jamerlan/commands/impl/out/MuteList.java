@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  MUTELIST chanName
  */
-public class MuteList implements Command {
+public class MuteList implements Command<PrintWriter> {
     private String chanName;
 
     public MuteList(String chanName) {

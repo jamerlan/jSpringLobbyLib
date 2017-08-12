@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 /**
  TESTLOGIN userName password
  */
-public class TestLogin implements Command {
+public class TestLogin implements Command<PrintWriter> {
     private String userName;
     private String password;
 

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  UPDATEBATTLEINFO spectatorCount locked mapHash {mapName}
  */
-public class UpdateBattleInfo implements Command {
+public class UpdateBattleInfo implements Command<PrintWriter> {
     private int spectatorCount;
     private int locked;
     private int mapHash;

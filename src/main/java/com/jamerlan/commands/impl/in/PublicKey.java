@@ -10,17 +10,17 @@ import java.io.PrintWriter;
 /**
  *PUBLICKEY server_public_key session_flag_bits
  */
-public class PublicKey implements Command {
-    private String line;
+public class PublicKey implements Command<String> {
+
     private ServerState serverState;
 
-    public PublicKey (String line, ServerState serverState) {
-        this.line = line;
+    public PublicKey (ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

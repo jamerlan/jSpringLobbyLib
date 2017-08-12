@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * CHANGEEMAIL newEmail [userName]
  */
-public class ChangeMail implements Command{
+public class ChangeMail implements Command<PrintWriter>{
     private String newEmail;
     private String userName;
 

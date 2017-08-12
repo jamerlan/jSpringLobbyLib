@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  IGNORE userName=value [{reason=value}]
  */
-public class Ignore implements Command {
+public class Ignore implements Command<PrintWriter> {
     private String userName;
     private String reason;
 

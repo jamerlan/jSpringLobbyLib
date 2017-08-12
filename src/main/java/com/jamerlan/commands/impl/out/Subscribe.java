@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  SUBSCRIBE chanName
  */
-public class Subscribe implements Command {
+public class Subscribe implements Command<PrintWriter> {
     private String chanName;
 
     public Subscribe(String chanName) {

@@ -11,17 +11,17 @@ import java.util.ArrayList;
 /**
  COMPFLAGS [compFlag1] [compFlag2] [...]
  */
-public class CompFlags implements Command {
-    private String line;
+public class CompFlags implements Command<String> {
+
     private ServerState serverState;
 
-    public CompFlags(String line, ServerState serverState) {
-        this.line = line;
+    public CompFlags(ServerState serverState) {
+
         this.serverState = serverState;
     }
 
     @Override
-    public void execute(PrintWriter writer) throws IOException {
+    public void execute(String line) throws IOException {
         CommandParser parser = new CommandParser(line);
         String commandName = parser.getString(" ");
 

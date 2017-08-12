@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 /**
  * IGNORELIST
  */
-public class IgnoreList implements Command {
+public class IgnoreList implements Command<PrintWriter> {
     @Override
     public void execute(PrintWriter writer) throws IOException {
         writer.println("IGNORELIST");
